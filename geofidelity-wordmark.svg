@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" role="img" aria-labelledby="title">
+  <title id="title">GeoFidelity wordmark</title>
+  <text x="0" y="32" font-family="system-ui, sans-serif" font-size="32" fill="#4f46e5">
+    <tspan font-weight="700">Geo</tspan><tspan font-weight="300">Fidelity</tspan>
+  </text>
+</svg>
