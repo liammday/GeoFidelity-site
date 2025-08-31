@@ -307,18 +307,23 @@
       });
 
       gsap.registerPlugin(ScrollTrigger);
-      gsap.utils.toArray('section').forEach((section) => {
-        gsap.from(section, {
-          opacity: 0,
-          y: 50,
-          duration: 0.6,
-          ease: 'power1.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        });
+      gsap.utils.toArray('section:not(:first-of-type)').forEach((section) => {
+        const content = section.querySelector(':scope > *');
+        if (content) {
+          gsap.fromTo(
+            content,
+            { opacity: 0 },
+            {
+              opacity: 1,
+              scrollTrigger: {
+                trigger: section,
+                start: 'top 90%',
+                end: 'top 50%',
+                scrub: true,
+              },
+            }
+          );
+        }
       });
     </script>
   </body>
