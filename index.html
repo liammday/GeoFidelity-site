@@ -25,7 +25,7 @@
         <button
           id="menu-button"
           type="button"
-          class="rounded-md p-2 text-gray-600 focus:outline-none md:hidden"
+          class="relative z-50 rounded-md p-2 text-gray-600 focus:outline-none md:hidden"
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
@@ -319,6 +319,7 @@
       const mobileMenu = document.getElementById('mobile-menu');
       const openIcon = document.getElementById('icon-menu');
       const closeIcon = document.getElementById('icon-close');
+      const menuLinks = mobileMenu.querySelectorAll('a');
       menuButton.addEventListener('click', () => {
         const expanded = menuButton.getAttribute('aria-expanded') === 'true';
         menuButton.setAttribute('aria-expanded', String(!expanded));
@@ -326,6 +327,16 @@
         openIcon.classList.toggle('hidden');
         closeIcon.classList.toggle('hidden');
         document.body.classList.toggle('overflow-hidden');
+      });
+
+      menuLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          menuButton.setAttribute('aria-expanded', 'false');
+          mobileMenu.classList.add('hidden');
+          openIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        });
       });
 
       gsap.registerPlugin(ScrollTrigger);
