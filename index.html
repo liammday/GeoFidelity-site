@@ -16,11 +16,19 @@
         outline: 2px solid #4f46e5;
         outline-offset: 2px;
       }
+      body.menu-open main,
+      body.menu-open footer {
+        filter: blur(4px);
+      }
+      main,
+      footer {
+        transition: filter 0.3s ease;
+      }
     </style>
   </head>
   <body class="bg-gray-50 text-gray-900 antialiased">
     <header class="fixed inset-x-0 top-0 z-50 bg-white shadow">
-      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#" class="flex items-center gap-2">
           <img src="geofidelity-symbol.svg" alt="" class="h-8 w-8" />
           <img src="geofidelity-wordmark.svg" alt="GeoFidelity" class="h-8" />
@@ -73,9 +81,9 @@
       </div>
       <div
         id="mobile-menu"
-        class="hidden fixed inset-0 z-40 bg-white p-6 md:hidden"
+        class="fixed left-4 right-4 z-40 hidden origin-top-right transform rounded-lg bg-white p-6 shadow-lg opacity-0 scale-95 pointer-events-none transition duration-300 md:hidden"
       >
-        <nav class="flex h-full flex-col items-center justify-center gap-4 text-lg">
+        <nav class="flex flex-col items-center gap-4 text-lg">
           <a href="#outcomes" class="text-gray-600 hover:text-gray-900">Outcomes</a>
           <a href="#process" class="text-gray-600 hover:text-gray-900">Process</a>
           <a href="#customers" class="text-gray-600 hover:text-gray-900">Customers</a>
@@ -89,7 +97,7 @@
         </nav>
       </div>
     </header>
-    <main class="pt-24">
+    <main class="pt-20">
       <section class="bg-white">
         <div class="mx-auto max-w-7xl px-6 py-24 md:grid md:grid-cols-2 md:items-center md:gap-12">
           <div>
@@ -295,22 +303,51 @@
       const openIcon = document.getElementById('icon-menu');
       const closeIcon = document.getElementById('icon-close');
       const menuLinks = mobileMenu.querySelectorAll('a');
+
+      function openMenu() {
+        const rect = menuButton.getBoundingClientRect();
+        mobileMenu.style.top = `${rect.bottom + 8}px`;
+        mobileMenu.classList.remove('hidden', 'pointer-events-none');
+        requestAnimationFrame(() => {
+          mobileMenu.classList.add('opacity-100', 'scale-100');
+          mobileMenu.classList.remove('opacity-0', 'scale-95');
+        });
+        document.body.classList.add('overflow-hidden', 'menu-open');
+        openIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.add('opacity-0', 'scale-95');
+        mobileMenu.classList.remove('opacity-100', 'scale-100');
+        document.body.classList.remove('overflow-hidden', 'menu-open');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        mobileMenu.addEventListener(
+          'transitionend',
+          function handler(e) {
+            if (e.propertyName === 'opacity') {
+              mobileMenu.classList.add('hidden', 'pointer-events-none');
+              mobileMenu.removeEventListener('transitionend', handler);
+            }
+          }
+        );
+      }
+
       menuButton.addEventListener('click', () => {
         const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
         menuButton.setAttribute('aria-expanded', String(!expanded));
-        mobileMenu.classList.toggle('hidden');
-        openIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-        document.body.classList.toggle('overflow-hidden');
       });
 
       menuLinks.forEach((link) => {
         link.addEventListener('click', () => {
           menuButton.setAttribute('aria-expanded', 'false');
-          mobileMenu.classList.add('hidden');
-          openIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-          document.body.classList.remove('overflow-hidden');
+          closeMenu();
         });
       });
 
