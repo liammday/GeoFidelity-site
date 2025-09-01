@@ -46,7 +46,7 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        width: 2px;
+        width: 4px;
         background: #4f46e5;
         left: 50%;
         transform: translateX(-50%);
@@ -420,11 +420,29 @@
         const afterWrapper = document.getElementById('hero-after-wrapper');
         const divider = document.getElementById('hero-divider');
         const state = { p: 0.25 };
-        function setPos(p) {
-          p = Math.min(Math.max(p, 0), 1);
-          const pct = p * 100;
+        const MIN = 0.05;
+        const MAX = 0.95;
+        function clamp(p) {
+          return Math.min(Math.max(p, MIN), MAX);
+        }
+        function applyPos() {
+          const pct = state.p * 100;
           afterWrapper.style.clipPath = `polygon(${pct}% 0,100% 0,100% 100%,${pct}% 100%)`;
           divider.style.left = `${pct}%`;
+        }
+        function setPos(p) {
+          state.p = clamp(p);
+          applyPos();
+        }
+        let moveTween;
+        function animateTo(p) {
+          if (moveTween) moveTween.kill();
+          moveTween = gsap.to(state, {
+            p: clamp(p),
+            duration: 0.3,
+            ease: 'power1.out',
+            onUpdate: applyPos,
+          });
         }
         let bounce;
         function startBounce() {
@@ -435,7 +453,7 @@
             repeat: -1,
             yoyo: true,
             ease: 'power1.inOut',
-            onUpdate: () => setPos(state.p),
+            onUpdate: applyPos,
           });
         }
         function stopBounce() {
@@ -444,17 +462,23 @@
         setPos(state.p);
         startBounce();
         let dragging = false;
-        function update(e) {
+        function update(e, immediate = false) {
           const rect = slider.getBoundingClientRect();
           const pos = (e.clientX - rect.left) / rect.width;
-          setPos(pos);
+          if (immediate) {
+            setPos(pos);
+          } else {
+            animateTo(pos);
+          }
         }
         slider.addEventListener('pointerenter', (e) => {
           stopBounce();
           update(e);
         });
         slider.addEventListener('pointermove', (e) => {
-          if (dragging || e.buttons === 0) {
+          if (dragging) {
+            update(e, true);
+          } else if (e.buttons === 0) {
             stopBounce();
             update(e);
           }
