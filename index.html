@@ -495,6 +495,11 @@
         function stopBounce() {
           if (bounce) bounce.kill();
         }
+        let restartTimeout;
+        function queueBounceRestart() {
+          clearTimeout(restartTimeout);
+          restartTimeout = setTimeout(startBounce, 5000);
+        }
         setPos(state.p);
         startBounce();
         let dragging = false;
@@ -506,6 +511,7 @@
           } else {
             animateTo(pos);
           }
+          queueBounceRestart();
         }
         slider.addEventListener('pointerenter', (e) => {
           stopBounce();
@@ -527,6 +533,7 @@
         });
         function release() {
           dragging = false;
+          queueBounceRestart();
         }
         slider.addEventListener('pointerup', release);
         slider.addEventListener('pointercancel', release);
