@@ -44,13 +44,12 @@
       }
       #hero-divider {
         position: absolute;
-        top: -10%;
-        bottom: -10%;
-        width: 4px;
-        background: white;
-        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #4f46e5;
         left: 50%;
-        transform: translateX(-50%) rotate(5deg);
+        transform: translateX(-50%);
         pointer-events: none;
       }
     </style>
@@ -468,13 +467,9 @@
         });
         function release() {
           dragging = false;
-          startBounce();
         }
         slider.addEventListener('pointerup', release);
         slider.addEventListener('pointercancel', release);
-        slider.addEventListener('pointerleave', () => {
-          if (!dragging) startBounce();
-        });
       })();
         const menuButton = document.getElementById('menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
