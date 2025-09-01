@@ -181,6 +181,51 @@
             </div>
           </div>
         </section>
+        <section id="customers" aria-labelledby="customers-heading" class="bg-white py-24">
+          <div class="mx-auto max-w-7xl px-6">
+            <h2 id="customers-heading" class="text-3xl font-bold text-gray-900">You are a...</h2>
+
+            <div class="mt-12">
+              <div class="flex border-b border-gray-200 text-sm" role="tablist">
+                <button
+                  class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold"
+                  data-client="housing"
+                  role="tab"
+                  aria-selected="true"
+                >
+                  Housing Development
+                </button>
+                <button
+                  class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+                  data-client="recreation"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Recreational Site
+                </button>
+                <button
+                  class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+                  data-client="park"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  National Park
+                </button>
+              </div>
+
+              <div class="mt-8 grid gap-8 md:grid-cols-2">
+                <div>
+                  <h3 class="text-xl font-semibold">Before</h3>
+                  <ul id="before-list" class="mt-4 space-y-3"></ul>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold">After</h3>
+                  <ul id="after-list" class="mt-4 space-y-3"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section aria-labelledby="impact-heading" class="bg-gray-50 py-24">
           <div class="mx-auto max-w-7xl px-6">
             <h2 id="impact-heading" class="sr-only">Before and After Map Impact</h2>
@@ -247,52 +292,6 @@
                 </div>
               </li>
             </ol>
-          </div>
-        </section>
-        <section id="customers" aria-labelledby="customers-heading" class="bg-white py-24">
-          <div class="mx-auto max-w-7xl px-6">
-            <h2 id="customers-heading" class="text-3xl font-bold text-gray-900">Who it's for</h2>
-            <p class="mt-8 text-gray-600">Parks, estates, and developments that need to be discoverable and accessible.</p>
-
-            <div class="mt-12">
-              <div class="flex border-b border-gray-200 text-sm" role="tablist">
-                <button
-                  class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600"
-                  data-client="housing"
-                  role="tab"
-                  aria-selected="true"
-                >
-                  Housing Development
-                </button>
-                <button
-                  class="client-tab px-4 py-2 text-gray-600 hover:text-gray-900"
-                  data-client="recreation"
-                  role="tab"
-                  aria-selected="false"
-                >
-                  Recreational Site
-                </button>
-                <button
-                  class="client-tab px-4 py-2 text-gray-600 hover:text-gray-900"
-                  data-client="park"
-                  role="tab"
-                  aria-selected="false"
-                >
-                  National Park
-                </button>
-              </div>
-
-              <div class="mt-8 grid gap-8 md:grid-cols-2">
-                <div>
-                  <h3 class="text-xl font-semibold">Before</h3>
-                  <ul id="before-list" class="mt-4 space-y-3"></ul>
-                </div>
-                <div>
-                  <h3 class="text-xl font-semibold">After</h3>
-                  <ul id="after-list" class="mt-4 space-y-3"></ul>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
       <section id="about" class="bg-gray-50 py-24">
@@ -529,18 +528,20 @@
         }
       }
 
-      tabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-          if (tab.getAttribute('aria-selected') === 'true') return;
-          tabs.forEach((t) => {
-            t.classList.remove('border-indigo-600', 'text-indigo-600');
-            t.setAttribute('aria-selected', 'false');
+        tabs.forEach((tab) => {
+          tab.addEventListener('click', () => {
+            if (tab.getAttribute('aria-selected') === 'true') return;
+            tabs.forEach((t) => {
+              t.classList.remove('border-indigo-600', 'text-indigo-600', 'font-semibold');
+              t.classList.add('border-transparent', 'text-gray-600', 'font-normal');
+              t.setAttribute('aria-selected', 'false');
+            });
+            tab.classList.remove('border-transparent', 'text-gray-600', 'font-normal');
+            tab.classList.add('border-indigo-600', 'text-indigo-600', 'font-semibold');
+            tab.setAttribute('aria-selected', 'true');
+            renderLists(tab.dataset.client);
           });
-          tab.classList.add('border-indigo-600', 'text-indigo-600');
-          tab.setAttribute('aria-selected', 'true');
-          renderLists(tab.dataset.client);
         });
-      });
 
       renderLists('housing');
     </script>
