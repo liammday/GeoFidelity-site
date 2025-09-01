@@ -81,22 +81,23 @@
       </div>
       <div
         id="mobile-menu"
-        class="fixed left-4 right-4 z-40 hidden origin-top-right transform rounded-lg bg-white p-6 shadow-lg opacity-0 scale-95 pointer-events-none transition duration-300 md:hidden overflow-y-auto"
+        class="fixed inset-x-0 z-50 hidden transform rounded-b-lg bg-gray-100 p-6 shadow-lg opacity-0 -translate-y-full pointer-events-none transition duration-300 md:hidden overflow-y-auto"
       >
-        <nav class="flex flex-col items-center gap-4 text-lg">
-          <a href="#outcomes" class="text-gray-600 hover:text-gray-900">Outcomes</a>
-          <a href="#process" class="text-gray-600 hover:text-gray-900">Process</a>
-          <a href="#customers" class="text-gray-600 hover:text-gray-900">Customers</a>
-          <a href="#about" class="text-gray-600 hover:text-gray-900">About</a>
-          <a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a>
+        <nav class="flex flex-col gap-4 text-lg text-left">
+          <a href="#outcomes" class="w-full text-gray-600 hover:text-gray-900">Outcomes</a>
+          <a href="#process" class="w-full text-gray-600 hover:text-gray-900">Process</a>
+          <a href="#customers" class="w-full text-gray-600 hover:text-gray-900">Customers</a>
+          <a href="#about" class="w-full text-gray-600 hover:text-gray-900">About</a>
+          <a href="#contact" class="w-full text-gray-600 hover:text-gray-900">Contact</a>
           <a
             href="#contact"
-            class="rounded-md bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-500"
+            class="w-full rounded-md bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-500"
             >Request Demo</a
           >
         </nav>
       </div>
     </header>
+    <div id="menu-overlay" class="fixed inset-0 z-40 hidden bg-black/20 opacity-0 transition-opacity duration-300 md:hidden"></div>
     <main class="pt-20">
       <section class="bg-white">
         <div class="mx-auto max-w-7xl px-6 py-24 md:grid md:grid-cols-2 md:items-center md:gap-12">
@@ -298,80 +299,92 @@
     </footer>
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
-      const menuButton = document.getElementById('menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const openIcon = document.getElementById('icon-menu');
-      const closeIcon = document.getElementById('icon-close');
-      const menuLinks = mobileMenu.querySelectorAll('a');
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const openIcon = document.getElementById('icon-menu');
+        const closeIcon = document.getElementById('icon-close');
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        const overlay = document.getElementById('menu-overlay');
+        const header = document.querySelector('header');
 
-      function openMenu() {
-        const rect = menuButton.getBoundingClientRect();
-        const topOffset = rect.bottom + 8;
-        mobileMenu.style.top = `${topOffset}px`;
-        mobileMenu.style.maxHeight = `calc(100vh - ${topOffset + 16}px)`;
-        mobileMenu.classList.remove('hidden', 'pointer-events-none');
-        requestAnimationFrame(() => {
-          const availableHeight = window.innerHeight - topOffset - 16;
-          const menuHeight = mobileMenu.offsetHeight;
-          if (availableHeight > menuHeight) {
-            const offset = (availableHeight - menuHeight) / 2;
-            mobileMenu.style.top = `${topOffset + offset}px`;
-          }
-          mobileMenu.classList.add('opacity-100', 'scale-100');
-          mobileMenu.classList.remove('opacity-0', 'scale-95');
-        });
-        document.body.classList.add('overflow-hidden', 'menu-open');
-        openIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
-        menuButton.classList.add('bg-indigo-600', 'text-white', 'rounded-full');
-        menuButton.classList.remove('text-gray-600');
-      }
-
-      function closeMenu() {
-        mobileMenu.classList.add('opacity-0', 'scale-95');
-        mobileMenu.classList.remove('opacity-100', 'scale-100');
-        document.body.classList.remove('overflow-hidden', 'menu-open');
-        openIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        menuButton.classList.remove('bg-indigo-600', 'text-white', 'rounded-full');
-        menuButton.classList.add('text-gray-600');
-        mobileMenu.addEventListener(
-          'transitionend',
-          function handler(e) {
-            if (e.propertyName === 'opacity') {
-              mobileMenu.classList.add('hidden', 'pointer-events-none');
-              mobileMenu.style.top = '';
-              mobileMenu.style.maxHeight = '';
-              mobileMenu.removeEventListener('transitionend', handler);
-            }
-          }
-        );
-      }
-
-      menuButton.addEventListener('click', () => {
-        const expanded = menuButton.getAttribute('aria-expanded') === 'true';
-        if (expanded) {
-          closeMenu();
-        } else {
-          openMenu();
+        function openMenu() {
+          const topOffset = header.offsetHeight;
+          mobileMenu.style.top = `${topOffset}px`;
+          mobileMenu.style.maxHeight = `calc(100vh - ${topOffset}px)`;
+          mobileMenu.classList.remove('hidden', 'pointer-events-none');
+          overlay.classList.remove('hidden');
+          requestAnimationFrame(() => {
+            mobileMenu.classList.add('translate-y-0', 'opacity-100');
+            mobileMenu.classList.remove('-translate-y-full', 'opacity-0');
+            overlay.classList.add('opacity-100');
+          });
+          document.body.classList.add('overflow-hidden', 'menu-open');
+          openIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+          menuButton.classList.add('bg-indigo-600', 'text-white', 'rounded-full');
+          menuButton.classList.remove('text-gray-600');
         }
-        menuButton.setAttribute('aria-expanded', String(!expanded));
-      });
 
-      menuLinks.forEach((link) => {
-        link.addEventListener('click', () => {
+        function closeMenu() {
+          mobileMenu.classList.add('-translate-y-full', 'opacity-0');
+          mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+          overlay.classList.remove('opacity-100');
+          overlay.classList.add('opacity-0');
+          document.body.classList.remove('overflow-hidden', 'menu-open');
+          openIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          menuButton.classList.remove('bg-indigo-600', 'text-white', 'rounded-full');
+          menuButton.classList.add('text-gray-600');
+          overlay.addEventListener(
+            'transitionend',
+            function handler(e) {
+              if (e.propertyName === 'opacity') {
+                overlay.classList.add('hidden');
+                overlay.removeEventListener('transitionend', handler);
+              }
+            }
+          );
+          mobileMenu.addEventListener(
+            'transitionend',
+            function handler(e) {
+              if (e.propertyName === 'transform') {
+                mobileMenu.classList.add('hidden', 'pointer-events-none');
+                mobileMenu.style.top = '';
+                mobileMenu.style.maxHeight = '';
+                mobileMenu.removeEventListener('transitionend', handler);
+              }
+            }
+          );
+        }
+
+        menuButton.addEventListener('click', () => {
+          const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+          if (expanded) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+          menuButton.setAttribute('aria-expanded', String(!expanded));
+        });
+
+        menuLinks.forEach((link) => {
+          link.addEventListener('click', () => {
+            menuButton.setAttribute('aria-expanded', 'false');
+            closeMenu();
+          });
+        });
+
+        overlay.addEventListener('click', () => {
           menuButton.setAttribute('aria-expanded', 'false');
           closeMenu();
         });
-      });
 
-      const header = document.querySelector('header');
-      function updateScrollPadding() {
-        document.documentElement.style.scrollPaddingTop = `${header.offsetHeight}px`;
-      }
-      window.addEventListener('load', updateScrollPadding);
-      window.addEventListener('resize', updateScrollPadding);
-      updateScrollPadding();
+        function updateScrollPadding() {
+          document.documentElement.style.scrollPaddingTop = `${header.offsetHeight}px`;
+        }
+        window.addEventListener('load', updateScrollPadding);
+        window.addEventListener('resize', updateScrollPadding);
+        updateScrollPadding();
 
       gsap.registerPlugin(ScrollTrigger);
       gsap.utils.toArray('section:not(:first-of-type)').forEach((section) => {
