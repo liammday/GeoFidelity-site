@@ -315,17 +315,63 @@
       <section id="contact" class="bg-white py-24">
         <div class="mx-auto max-w-xl px-6">
           <h2 class="text-center text-3xl font-bold">Get in Touch</h2>
-          <form class="mt-8 space-y-4">
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="mt-8 space-y-4"
+          >
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+            <div>
+              <label for="name" class="sr-only">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Name"
+                required
+                class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+              />
+            </div>
+            <div>
+              <label for="company" class="sr-only">Company</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                placeholder="Company"
+                class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+              />
+            </div>
             <div>
               <label for="email" class="sr-only">Email</label>
-              <input id="email" type="email" placeholder="Email address" class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500" />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email address"
+                required
+                class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+              />
             </div>
             <div>
               <label for="message" class="sr-only">Message</label>
-              <textarea id="message" rows="4" placeholder="Your message" class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Your message"
+                required
+                class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+              ></textarea>
             </div>
+            <div class="h-captcha" data-sitekey="YOUR_HCAPTCHA_SITE_KEY"></div>
             <div class="text-right">
-              <button type="submit" class="rounded-md bg-indigo-600 px-6 py-3 font-medium text-white hover:bg-indigo-500">Send Message</button>
+              <button
+                type="submit"
+                class="rounded-md bg-indigo-600 px-6 py-3 font-medium text-white hover:bg-indigo-500"
+              >
+                Send Message
+              </button>
             </div>
           </form>
         </div>
@@ -560,5 +606,6 @@
 
       renderLists('housing');
     </script>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   </body>
 </html>
