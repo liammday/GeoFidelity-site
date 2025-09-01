@@ -253,6 +253,46 @@
           <div class="mx-auto max-w-7xl px-6">
             <h2 id="customers-heading" class="text-3xl font-bold text-gray-900">Who it's for</h2>
             <p class="mt-8 text-gray-600">Parks, estates, and developments that need to be discoverable and accessible.</p>
+
+            <div class="mt-12">
+              <div class="flex border-b border-gray-200 text-sm" role="tablist">
+                <button
+                  class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600"
+                  data-client="housing"
+                  role="tab"
+                  aria-selected="true"
+                >
+                  Housing Development
+                </button>
+                <button
+                  class="client-tab px-4 py-2 text-gray-600 hover:text-gray-900"
+                  data-client="recreation"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Recreational Site
+                </button>
+                <button
+                  class="client-tab px-4 py-2 text-gray-600 hover:text-gray-900"
+                  data-client="park"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  National Park
+                </button>
+              </div>
+
+              <div class="mt-8 grid gap-8 md:grid-cols-2">
+                <div>
+                  <h3 class="text-xl font-semibold">Before</h3>
+                  <ul id="before-list" class="mt-4 space-y-3"></ul>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold">After</h3>
+                  <ul id="after-list" class="mt-4 space-y-3"></ul>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       <section id="about" class="bg-gray-50 py-24">
@@ -405,6 +445,104 @@
           );
         }
       });
+
+      const scenarios = {
+        housing: {
+          before: [
+            { text: 'Navigation apps lead visitors to wrong entrances.', positive: false },
+            { text: 'Delivery drivers struggle to find addresses.', positive: false },
+            { text: 'Emergency response times increase due to map errors.', positive: false },
+          ],
+          after: [
+            { text: 'Correct entrance data ensures seamless arrivals.', positive: true },
+            { text: 'Accurate addresses reduce delivery delays.', positive: true },
+            { text: 'Emergency services reach locations quickly.', positive: true },
+          ],
+        },
+        recreation: {
+          before: [
+            { text: 'Trails are missing or misaligned on maps.', positive: false },
+            { text: 'Guests can\u2019t find parking or amenities.', positive: false },
+            { text: 'Visitors get lost due to outdated info.', positive: false },
+          ],
+          after: [
+            { text: 'Mapped trails guide hikers effectively.', positive: true },
+            { text: 'Facilities and parking clearly marked.', positive: true },
+            { text: 'Up-to-date info improves visitor experience.', positive: true },
+          ],
+        },
+        park: {
+          before: [
+            { text: 'Boundary lines are inaccurate causing confusion.', positive: false },
+            { text: 'Points of interest are misplaced or missing.', positive: false },
+            { text: 'Offline maps fail in remote areas.', positive: false },
+          ],
+          after: [
+            { text: 'Precise boundaries protect sensitive areas.', positive: true },
+            { text: 'Landmarks and trails accurately represented.', positive: true },
+            { text: 'Offline-ready data supports remote access.', positive: true },
+          ],
+        },
+      };
+
+      const beforeList = document.getElementById('before-list');
+      const afterList = document.getElementById('after-list');
+      const tabs = document.querySelectorAll('.client-tab');
+
+      const icons = {
+        positive:
+          '<svg class="h-5 w-5 text-green-600" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>',
+        negative:
+          '<svg class="h-5 w-5 text-red-600" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M6 18L18 6"/></svg>',
+      };
+
+      function renderLists(type) {
+        const data = scenarios[type];
+        const oldItems = [...beforeList.children, ...afterList.children];
+        const populate = () => {
+          beforeList.innerHTML = '';
+          afterList.innerHTML = '';
+          data.before.forEach((item) => {
+            const li = document.createElement('li');
+            li.className = 'flex items-start gap-2';
+            li.innerHTML = `${icons[item.positive ? 'positive' : 'negative']}<span>${item.text}</span>`;
+            beforeList.appendChild(li);
+          });
+          data.after.forEach((item) => {
+            const li = document.createElement('li');
+            li.className = 'flex items-start gap-2';
+            li.innerHTML = `${icons[item.positive ? 'positive' : 'negative']}<span>${item.text}</span>`;
+            afterList.appendChild(li);
+          });
+          const newItems = [...beforeList.children, ...afterList.children];
+          gsap.fromTo(newItems, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.05 });
+        };
+        if (oldItems.length) {
+          gsap.to(oldItems, {
+            opacity: 0,
+            y: -10,
+            duration: 0.2,
+            onComplete: populate,
+          });
+        } else {
+          populate();
+        }
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          if (tab.getAttribute('aria-selected') === 'true') return;
+          tabs.forEach((t) => {
+            t.classList.remove('border-indigo-600', 'text-indigo-600');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('border-indigo-600', 'text-indigo-600');
+          tab.setAttribute('aria-selected', 'true');
+          renderLists(tab.dataset.client);
+        });
+      });
+
+      renderLists('housing');
     </script>
   </body>
 </html>
