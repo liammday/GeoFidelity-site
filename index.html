@@ -52,14 +52,12 @@
         transform: translateX(-50%);
         pointer-events: none;
       }
-      .stroke-dotted { stroke-dasharray: 1 5; }
-      .stroke-dash-1 { stroke-dasharray: 2 5; }
-      .stroke-dash-2 { stroke-dasharray: 3 5; }
-      .stroke-dash-3 { stroke-dasharray: 4 5; }
-      .stroke-dash-4 { stroke-dasharray: 5 5; }
-      .stroke-dash-5 { stroke-dasharray: 6 5; }
-      .stroke-dash-6 { stroke-dasharray: 8 5; }
-      .stroke-solid { stroke-dasharray: none; }
+      .outline-text {
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 4px #4f46e5;
+        text-stroke: 4px #4f46e5;
+      }
     </style>
   </head>
   <body class="bg-gray-50 text-gray-900 antialiased">
@@ -140,33 +138,7 @@
           <div>
             <p class="text-sm font-semibold uppercase tracking-wide text-indigo-600">Map accuracy &amp; verification</p>
             <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
-              <span class="sr-only">Accurate</span>
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 640 100"
-                class="inline-block h-[1em] w-auto align-baseline text-indigo-600"
-              >
-                <text
-                  x="0"
-                  y="75"
-                  font-family="inherit"
-                  font-size="80"
-                  font-weight="800"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                >
-                  <tspan class="stroke-dotted">A</tspan>
-                  <tspan class="stroke-dash-1">c</tspan>
-                  <tspan class="stroke-dash-2">c</tspan>
-                  <tspan class="stroke-dash-3">u</tspan>
-                  <tspan class="stroke-dash-4">r</tspan>
-                  <tspan class="stroke-dash-5">a</tspan>
-                  <tspan class="stroke-dash-6">t</tspan>
-                  <tspan class="stroke-solid">e</tspan>
-                </text>
-              </svg>
-              maps that work.
+              <span class="outline-text">Accurate</span> maps that work.
             </h1>
             <p class="mt-6 text-lg text-gray-600">
               GeoFidelity checks and corrects OpenStreetMap so your site is findable and accessible across major map platforms.
