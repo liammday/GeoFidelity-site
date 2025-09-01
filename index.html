@@ -53,19 +53,19 @@
           >
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          <svg
-            id="icon-close"
-            class="hidden h-6 w-6"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M6 6l12 12M6 18L18 6" />
-          </svg>
-        </button>
+            <svg
+              id="icon-close"
+              class="hidden h-6 w-6"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M6 6l12 12M6 18L18 6" />
+            </svg>
+          </button>
         <nav class="hidden gap-8 text-sm md:flex" id="desktop-menu">
           <a href="#outcomes" class="text-gray-600 hover:text-gray-900">Outcomes</a>
           <a href="#process" class="text-gray-600 hover:text-gray-900">Process</a>
@@ -81,7 +81,7 @@
       </div>
       <div
         id="mobile-menu"
-        class="fixed left-4 right-4 z-40 hidden origin-top-right transform rounded-lg bg-white p-6 shadow-lg opacity-0 scale-95 pointer-events-none transition duration-300 md:hidden"
+        class="fixed left-4 right-4 z-40 hidden origin-top-right transform rounded-lg bg-white p-6 shadow-lg opacity-0 scale-95 pointer-events-none transition duration-300 md:hidden overflow-y-auto"
       >
         <nav class="flex flex-col items-center gap-4 text-lg">
           <a href="#outcomes" class="text-gray-600 hover:text-gray-900">Outcomes</a>
@@ -306,15 +306,25 @@
 
       function openMenu() {
         const rect = menuButton.getBoundingClientRect();
-        mobileMenu.style.top = `${rect.bottom + 8}px`;
+        const topOffset = rect.bottom + 8;
+        mobileMenu.style.top = `${topOffset}px`;
+        mobileMenu.style.maxHeight = `calc(100vh - ${topOffset + 16}px)`;
         mobileMenu.classList.remove('hidden', 'pointer-events-none');
         requestAnimationFrame(() => {
+          const availableHeight = window.innerHeight - topOffset - 16;
+          const menuHeight = mobileMenu.offsetHeight;
+          if (availableHeight > menuHeight) {
+            const offset = (availableHeight - menuHeight) / 2;
+            mobileMenu.style.top = `${topOffset + offset}px`;
+          }
           mobileMenu.classList.add('opacity-100', 'scale-100');
           mobileMenu.classList.remove('opacity-0', 'scale-95');
         });
         document.body.classList.add('overflow-hidden', 'menu-open');
         openIcon.classList.add('hidden');
         closeIcon.classList.remove('hidden');
+        menuButton.classList.add('bg-indigo-600', 'text-white', 'rounded-full');
+        menuButton.classList.remove('text-gray-600');
       }
 
       function closeMenu() {
@@ -323,11 +333,15 @@
         document.body.classList.remove('overflow-hidden', 'menu-open');
         openIcon.classList.remove('hidden');
         closeIcon.classList.add('hidden');
+        menuButton.classList.remove('bg-indigo-600', 'text-white', 'rounded-full');
+        menuButton.classList.add('text-gray-600');
         mobileMenu.addEventListener(
           'transitionend',
           function handler(e) {
             if (e.propertyName === 'opacity') {
               mobileMenu.classList.add('hidden', 'pointer-events-none');
+              mobileMenu.style.top = '';
+              mobileMenu.style.maxHeight = '';
               mobileMenu.removeEventListener('transitionend', handler);
             }
           }
