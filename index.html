@@ -376,23 +376,23 @@
           menuButton.classList.add('text-gray-600');
           overlay.addEventListener(
             'transitionend',
-            function handler(e) {
-              if (e.propertyName === 'opacity') {
+            (e) => {
+              if (e.target === overlay) {
                 overlay.classList.add('hidden');
-                overlay.removeEventListener('transitionend', handler);
               }
-            }
+            },
+            { once: true }
           );
           mobileMenu.addEventListener(
             'transitionend',
-            function handler(e) {
-              if (e.propertyName === 'transform') {
+            (e) => {
+              if (e.target === mobileMenu) {
                 mobileMenu.classList.add('hidden', 'pointer-events-none');
                 mobileMenu.style.top = '';
                 mobileMenu.style.maxHeight = '';
-                mobileMenu.removeEventListener('transitionend', handler);
               }
-            }
+            },
+            { once: true }
           );
         }
 
