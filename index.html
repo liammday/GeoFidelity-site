@@ -74,28 +74,28 @@
           <img src="geofidelity-wordmark.svg" alt="GeoFidelity" class="h-8" />
         </a>
         <button
-          id="menu-button"
-          type="button"
-          class="relative z-50 rounded-md p-2 text-gray-600 focus:outline-none md:hidden"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            id="icon-menu"
-            class="h-6 w-6"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            id="menu-button"
+            type="button"
+            class="relative z-50 rounded-md p-2 text-gray-600 focus:outline-none md:hidden"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
           >
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+            <span class="sr-only">Open main menu</span>
+            <svg
+              id="icon-menu"
+              class="h-6 w-6 transform transition duration-300 pointer-events-none"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
             <svg
               id="icon-close"
-              class="hidden h-6 w-6"
+              class="absolute inset-0 h-6 w-6 transform opacity-0 -rotate-90 transition duration-300 pointer-events-none"
               aria-hidden="true"
               fill="none"
               stroke="currentColor"
@@ -533,8 +533,8 @@
             overlay.classList.add('opacity-100');
           });
           document.body.classList.add('overflow-hidden', 'menu-open');
-          openIcon.classList.add('hidden');
-          closeIcon.classList.remove('hidden');
+          openIcon.classList.add('opacity-0', 'rotate-90');
+          closeIcon.classList.remove('opacity-0', '-rotate-90');
           menuButton.classList.add('bg-indigo-600', 'text-white', 'rounded-full');
           menuButton.classList.remove('text-gray-600');
         }
@@ -545,8 +545,8 @@
           overlay.classList.remove('opacity-100');
           overlay.classList.add('opacity-0');
           document.body.classList.remove('overflow-hidden', 'menu-open');
-          openIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
+          openIcon.classList.remove('opacity-0', 'rotate-90');
+          closeIcon.classList.add('opacity-0', '-rotate-90');
           menuButton.classList.remove('bg-indigo-600', 'text-white', 'rounded-full');
           menuButton.classList.add('text-gray-600');
           overlay.addEventListener(
