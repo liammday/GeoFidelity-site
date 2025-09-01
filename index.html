@@ -24,6 +24,35 @@
       footer {
         transition: filter 0.3s ease;
       }
+      #hero-slider {
+        position: relative;
+        overflow: hidden;
+        cursor: ew-resize;
+        touch-action: pan-y;
+      }
+      #hero-slider img {
+        display: block;
+        width: 100%;
+        height: auto;
+        user-select: none;
+        pointer-events: none;
+      }
+      #hero-after-wrapper {
+        position: absolute;
+        inset: 0;
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+      }
+      #hero-divider {
+        position: absolute;
+        top: -10%;
+        bottom: -10%;
+        width: 4px;
+        background: white;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+        left: 50%;
+        transform: translateX(-50%) rotate(5deg);
+        pointer-events: none;
+      }
     </style>
   </head>
   <body class="bg-gray-50 text-gray-900 antialiased">
@@ -128,11 +157,13 @@
             </ul>
           </div>
           <div class="mt-12 md:mt-0">
-            <img
-              src="752F10B8-56FC-4AB3-B752-F46102944DCD.png"
-              alt="Illustration: map layers aligning"
-              class="h-auto w-full"
-            />
+            <div id="hero-slider">
+              <img src="hero-before.svg" alt="Before map" />
+              <div id="hero-after-wrapper">
+                <img src="hero-after.svg" alt="After map" />
+              </div>
+              <div id="hero-divider"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -384,6 +415,67 @@
     </footer>
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+      (function () {
+        const slider = document.getElementById('hero-slider');
+        if (!slider) return;
+        const afterWrapper = document.getElementById('hero-after-wrapper');
+        const divider = document.getElementById('hero-divider');
+        const state = { p: 0.25 };
+        function setPos(p) {
+          p = Math.min(Math.max(p, 0), 1);
+          const pct = p * 100;
+          afterWrapper.style.clipPath = `polygon(${pct}% 0,100% 0,100% 100%,${pct}% 100%)`;
+          divider.style.left = `${pct}%`;
+        }
+        let bounce;
+        function startBounce() {
+          stopBounce();
+          bounce = gsap.to(state, {
+            p: 0.75,
+            duration: 3,
+            repeat: -1,
+            yoyo: true,
+            ease: 'power1.inOut',
+            onUpdate: () => setPos(state.p),
+          });
+        }
+        function stopBounce() {
+          if (bounce) bounce.kill();
+        }
+        setPos(state.p);
+        startBounce();
+        let dragging = false;
+        function update(e) {
+          const rect = slider.getBoundingClientRect();
+          const pos = (e.clientX - rect.left) / rect.width;
+          setPos(pos);
+        }
+        slider.addEventListener('pointerenter', (e) => {
+          stopBounce();
+          update(e);
+        });
+        slider.addEventListener('pointermove', (e) => {
+          if (dragging || e.buttons === 0) {
+            stopBounce();
+            update(e);
+          }
+        });
+        slider.addEventListener('pointerdown', (e) => {
+          dragging = true;
+          slider.setPointerCapture(e.pointerId);
+          stopBounce();
+          update(e);
+        });
+        function release() {
+          dragging = false;
+          startBounce();
+        }
+        slider.addEventListener('pointerup', release);
+        slider.addEventListener('pointercancel', release);
+        slider.addEventListener('pointerleave', () => {
+          if (!dragging) startBounce();
+        });
+      })();
         const menuButton = document.getElementById('menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const openIcon = document.getElementById('icon-menu');
