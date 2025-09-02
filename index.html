@@ -435,40 +435,45 @@
             Customers
           </h2>
 
-          <div class="mt-12">
-            <div class="flex border-b border-gray-200 text-sm" role="tablist">
-              <button
-                class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold"
-                data-client="housing"
-                role="tab"
-                aria-selected="true"
-              >
-                Housing Development
-              </button>
-              <button
-                class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
-                data-client="recreation"
-                role="tab"
-                aria-selected="false"
-              >
-                Recreational Site
-              </button>
-              <button
-                class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
-                data-client="park"
-                role="tab"
-                aria-selected="false"
-              >
-                National Park
-              </button>
-            </div>
-
-            <div class="mt-8 grid gap-8 md:grid-cols-2">
-              <div>
-                <h3 class="text-xl font-semibold">Before</h3>
-                <ul id="before-list" class="mt-4 space-y-3"></ul>
+            <div class="mt-12">
+              <div id="customer-nav-wrapper" class="w-full bg-white">
+                <div
+                  class="mx-auto max-w-7xl px-6 flex border-b border-gray-200 text-sm"
+                  role="tablist"
+                >
+                  <button
+                    class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold"
+                    data-client="housing"
+                    role="tab"
+                    aria-selected="true"
+                  >
+                    Housing Developer
+                  </button>
+                  <button
+                    class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+                    data-client="tourism"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    Tourism Board
+                  </button>
+                  <button
+                    class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+                    data-client="park"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    National Park Authority
+                  </button>
+                </div>
               </div>
-              <div>
+
+              <div class="mt-8 grid gap-8 md:grid-cols-2">
+                <div>
+                  <h3 class="text-xl font-semibold">Before</h3>
+                  <ul id="before-list" class="mt-4 space-y-3"></ul>
+                </div>
+                <div>
                 <h3 class="text-xl font-semibold">After</h3>
                 <ul id="after-list" class="mt-4 space-y-3"></ul>
               </div>
@@ -488,38 +493,12 @@
           >
             Services
           </h2>
-          <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
-            <a
-              href="/services"
-              class="block rounded-lg bg-white p-6 shadow transition hover:shadow-md"
-            >
-              <h3 class="text-xl font-semibold text-gray-900">
-                Map Readiness Audit
-              </h3>
-              <p class="mt-2 text-gray-600">
-                A clear report on how your site appears across OSM, Google and
-                Apple, with a fix plan.
-              </p>
-              <span class="mt-4 inline-flex items-center text-indigo-600"
-                >Learn more<span aria-hidden="true" class="ml-1">→</span></span
-              >
-            </a>
-            <a
-              href="/services"
-              class="block rounded-lg bg-white p-6 shadow transition hover:shadow-md"
-            >
-              <h3 class="text-xl font-semibold text-gray-900">OSM Fixes</h3>
-              <p class="mt-2 text-gray-600">
-                We correct and verify your site’s data in OSM so it appears
-                correctly everywhere.
-              </p>
-              <span class="mt-4 inline-flex items-center text-indigo-600"
-                >Learn more<span aria-hidden="true" class="ml-1">→</span></span
-              >
-            </a>
+            <div
+              id="tier-container"
+              class="mt-12 flex space-x-6 overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:space-x-0"
+            ></div>
           </div>
-        </div>
-      </section>
+        </section>
       <section
         id="process"
         aria-labelledby="process-heading"
@@ -1180,7 +1159,7 @@
             },
           ],
         },
-        recreation: {
+        tourism: {
           before: [
             {
               text: "Trails are missing or misaligned on maps.",
@@ -1233,9 +1212,64 @@
         },
       };
 
-      const beforeList = document.getElementById("before-list");
-      const afterList = document.getElementById("after-list");
-      const tabs = document.querySelectorAll(".client-tab");
+        const serviceTiers = [
+          {
+            title: "Open Source Compilation",
+            what: "We identify, clean, and compile the best available open data sources (OpenStreetMap, Wikidata, local authority releases, etc.), then upload updates on your behalf.",
+            who: {
+              housing:
+                "Housing Developer: Add new estate roads, footpaths, and amenities so buyers see their homes appear in digital maps from day one.",
+              tourism:
+                "Tourism Board: Standardise points of interest (heritage sites, attractions, hospitality) so visitors find you consistently in every mapping app.",
+              park:
+                "National Park Authority: Ensure trails, car parks, visitor centres, and waymarked routes are visible and accurate across Google, Apple, and OSM-derived apps.",
+            },
+            deliverables: [
+              "Aggregated and cleaned dataset",
+              "Verified OSM updates and third-party submissions",
+              "Annual audit of key coverage",
+            ],
+          },
+          {
+            title: "Expert Validation & Enrichment",
+            what: "Our specialists cross-check data against authoritative sources, enrich it with metadata (accessibility, opening hours, facilities), and liaise with platform maintainers to accelerate adoption.",
+            who: {
+              housing:
+                "Housing Developer: Highlight amenities (playgrounds, bus stops, green spaces) and ensure address ranges are properly indexed.",
+              tourism:
+                "Tourism Board: Add booking links, photos, and tags to improve discoverability in travel platforms.",
+              park:
+                "National Park Authority: Ensure accessibility data (wheelchair routes, gradients, toilets) is consistently visible across major apps.",
+            },
+            deliverables: [
+              "Fully validated dataset with rich metadata",
+              "Quarterly updates and corrections",
+              "Direct engagement with third-party platforms (Apple, Google, Mapbox, etc.)",
+            ],
+          },
+          {
+            title: "First-Party Capture & Ground Truth",
+            what: "We deploy field teams or equip your staff with mobile survey tools to capture first-party data—GPS-verified routes, accessibility audits, signage inventories, and high-accuracy photos.",
+            who: {
+              housing:
+                "Housing Developer: On-site mapping of new developments, capturing address ranges, site access, and construction phasing to keep maps current as homes are handed over.",
+              tourism:
+                "Tourism Board: Capture verified imagery, footfall counts, and street-level navigation details to stand out on digital platforms.",
+              park:
+                "National Park Authority: Survey trails, signage, and safety infrastructure to ensure accuracy in both maps and emergency-services databases.",
+            },
+            deliverables: [
+              "Verified first-party dataset with GPS traces and images",
+              "Monthly/real-time updates through our platform",
+              "Priority integrations with partner mapping services",
+            ],
+          },
+        ];
+
+        const beforeList = document.getElementById("before-list");
+        const afterList = document.getElementById("after-list");
+        const tabs = document.querySelectorAll(".client-tab");
+        const tierContainer = document.getElementById("tier-container");
 
       const icons = {
         positive:
@@ -1244,7 +1278,7 @@
           '<svg class="h-5 w-5 text-red-600" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M6 18L18 6"/></svg>',
       };
 
-      function renderLists(type) {
+        function renderLists(type) {
         const data = scenarios[type];
         const oldItems = [...beforeList.children, ...afterList.children];
         const populate = () => {
@@ -1281,11 +1315,79 @@
         } else {
           populate();
         }
-      }
+        }
 
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          if (tab.getAttribute("aria-selected") === "true") return;
+        function renderServices(type) {
+          tierContainer.innerHTML = "";
+          serviceTiers.forEach((tier) => {
+            const card = document.createElement("div");
+            card.className =
+              "snap-center min-w-[80%] flex-shrink-0 rounded-lg bg-white p-6 shadow lg:min-w-0";
+            card.innerHTML = `
+              <h3 class="text-xl font-semibold text-gray-900">${tier.title}</h3>
+              <p class="mt-2 text-gray-600">${tier.what}</p>
+              <div class="mt-4">
+                <h4 class="font-semibold">Who it's for</h4>
+                <ul class="mt-1 list-disc pl-5 text-gray-600">
+                  <li>${tier.who[type]}</li>
+                </ul>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-semibold">Deliverables</h4>
+                <ul class="mt-1 list-disc pl-5 text-gray-600">
+                  ${tier.deliverables.map((d) => `<li>${d}</li>`).join("")}
+                </ul>
+              </div>
+            `;
+            tierContainer.appendChild(card);
+          });
+        }
+
+        const customerNavWrapper = document.getElementById("customer-nav-wrapper");
+        const servicesSection = document.getElementById("services");
+        const navPlaceholder = document.createElement("div");
+        navPlaceholder.style.height = customerNavWrapper.offsetHeight + "px";
+        const navOffsetTop = customerNavWrapper.offsetTop;
+        window.addEventListener("scroll", () => {
+          const servicesBottom =
+            servicesSection.offsetTop + servicesSection.offsetHeight;
+          if (
+            window.scrollY >= navOffsetTop &&
+            window.scrollY < servicesBottom
+          ) {
+            if (!customerNavWrapper.classList.contains("fixed")) {
+              customerNavWrapper.classList.add(
+                "fixed",
+                "top-0",
+                "left-0",
+                "right-0",
+                "z-30",
+                "bg-white",
+                "shadow",
+              );
+              customerNavWrapper.parentNode.insertBefore(
+                navPlaceholder,
+                customerNavWrapper,
+              );
+            }
+          } else if (customerNavWrapper.classList.contains("fixed")) {
+            customerNavWrapper.classList.remove(
+              "fixed",
+              "top-0",
+              "left-0",
+              "right-0",
+              "z-30",
+              "bg-white",
+              "shadow",
+            );
+            if (navPlaceholder.parentNode)
+              navPlaceholder.parentNode.removeChild(navPlaceholder);
+          }
+        });
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            if (tab.getAttribute("aria-selected") === "true") return;
           tabs.forEach((t) => {
             t.classList.remove(
               "border-indigo-600",
@@ -1313,11 +1415,13 @@
             "font-semibold",
           );
           tab.setAttribute("aria-selected", "true");
-          renderLists(tab.dataset.client);
+            renderLists(tab.dataset.client);
+            renderServices(tab.dataset.client);
+          });
         });
-      });
 
-      renderLists("housing");
+        renderLists("housing");
+        renderServices("housing");
 
       const contactForm = document.getElementById("contact-form");
       const contactSlides = document.querySelectorAll(".contact-slide");
