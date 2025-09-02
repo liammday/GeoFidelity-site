@@ -383,48 +383,115 @@
       <section id="contact" aria-labelledby="contact-heading" class="bg-white py-24">
         <div class="mx-auto max-w-xl px-6">
           <h2 id="contact-heading" class="text-center text-3xl font-bold text-gray-900">Contact</h2>
-          <form id="contact-form" method="POST" class="mt-8 space-y-4">
-            <div>
-              <label for="name" class="sr-only">Name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Name"
-                required
-                class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
-              />
+          <div id="contact-form" class="mt-8">
+            <p id="contact-steps" class="mb-4 text-center text-sm text-gray-500">Step 1 of 5</p>
+            <div class="space-y-4">
+              <div class="contact-slide space-y-4" data-step="1">
+                <div>
+                  <label for="q-name" class="sr-only">Name</label>
+                  <input
+                    id="q-name"
+                    name="name"
+                    type="text"
+                    placeholder="Name"
+                    required
+                    class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                  />
+                </div>
+                <div>
+                  <label for="q-company" class="sr-only">Company</label>
+                  <input
+                    id="q-company"
+                    name="company"
+                    type="text"
+                    placeholder="Company"
+                    required
+                    class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                  />
+                </div>
+              </div>
+              <div class="contact-slide hidden space-y-4" data-step="2">
+                <div>
+                  <label for="q-role" class="sr-only">Company type or role</label>
+                  <select
+                    id="q-role"
+                    name="role"
+                    class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                    required
+                  >
+                    <option value="">Select company type/role</option>
+                    <option>Developer</option>
+                    <option>Planner</option>
+                    <option>Government</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div id="q-role-other-wrapper" class="hidden">
+                  <label for="q-role-other" class="sr-only">Other role</label>
+                  <input
+                    id="q-role-other"
+                    type="text"
+                    placeholder="Please specify"
+                    class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                  />
+                </div>
+              </div>
+              <div class="contact-slide hidden" data-step="3">
+                <label for="q-address" class="sr-only">Address</label>
+                <input
+                  id="q-address"
+                  type="text"
+                  placeholder="Address"
+                  required
+                  class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                />
+              </div>
+              <div class="contact-slide hidden space-y-4" data-step="4">
+                <label for="q-size-slider" class="text-sm font-medium text-gray-700">Approximate site size</label>
+                <input id="q-size-slider" type="range" min="0" max="1000" value="10" class="w-full" />
+                <div class="flex items-center gap-2">
+                  <input
+                    id="q-size-input"
+                    type="number"
+                    min="0"
+                    max="1000"
+                    value="10"
+                    class="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                  />
+                  <select
+                    id="q-size-unit"
+                    class="rounded-md border border-gray-300 px-2 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                  >
+                    <option value="km²">km²</option>
+                    <option value="mi²">mi²</option>
+                  </select>
+                </div>
+              </div>
+              <div class="contact-slide hidden space-y-4" data-step="5">
+                <p class="text-gray-700">Please confirm your details:</p>
+                <ul id="q-summary" class="space-y-1 text-gray-900"></ul>
+                <p class="text-sm text-gray-500">Your email client will open allowing you to add more details.</p>
+              </div>
             </div>
-            <div>
-              <label for="company" class="sr-only">Company</label>
-              <input
-                id="company"
-                name="company"
-                type="text"
-                placeholder="Company"
-                required
-                class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
-              />
-            </div>
-            <div>
-              <label for="message" class="sr-only">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                placeholder="Your message (optional)"
-                class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
-              ></textarea>
-            </div>
-            <div class="text-right">
+            <div class="mt-6 flex justify-between">
               <button
-                type="submit"
-                class="rounded-md bg-indigo-600 px-6 py-3 font-medium text-white hover:bg-indigo-500"
+                id="contact-back"
+                type="button"
+                class="rounded-md bg-gray-200 px-4 py-2 text-gray-700 disabled:opacity-50"
+                disabled
               >
-                Send Message
+                Back
+              </button>
+              <button
+                id="contact-next"
+                type="button"
+                class="rounded-md bg-indigo-600 px-6 py-3 font-medium text-white disabled:opacity-50"
+                disabled
+              >
+                Next
               </button>
             </div>
-          </form>
+          </div>
           <div id="contact-success" class="mt-8 hidden text-center">
             <p class="text-lg font-medium text-gray-900">
               Your email client should now be open with a pre-filled message. Please continue there to send your message.
@@ -826,26 +893,149 @@
       renderLists('housing');
 
       const contactForm = document.getElementById('contact-form');
+      const contactSlides = document.querySelectorAll('.contact-slide');
+      const nextButton = document.getElementById('contact-next');
+      const backButton = document.getElementById('contact-back');
+      const stepsText = document.getElementById('contact-steps');
       const successMessage = document.getElementById('contact-success');
       const resetButton = document.getElementById('contact-reset');
-      if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const formData = new FormData(contactForm);
-          const name = formData.get('name') || '';
-          const company = formData.get('company') || '';
-          const message = formData.get('message') || '';
-          const body = `Name: ${name}\nCompany: ${company}\n\nMessage:\n${message}`;
-          const mailto = `mailto:enquiries@geofidelity.com?subject=${encodeURIComponent('Contact Form Submission')}&body=${encodeURIComponent(body)}`;
-          window.location.href = mailto;
-          contactForm.classList.add('hidden');
-          successMessage.classList.remove('hidden');
-          contactForm.reset();
+
+      const qName = document.getElementById('q-name');
+      const qCompany = document.getElementById('q-company');
+      const qRole = document.getElementById('q-role');
+      const qRoleOtherWrapper = document.getElementById('q-role-other-wrapper');
+      const qRoleOther = document.getElementById('q-role-other');
+      const qAddress = document.getElementById('q-address');
+      const qSizeSlider = document.getElementById('q-size-slider');
+      const qSizeInput = document.getElementById('q-size-input');
+      const qSizeUnit = document.getElementById('q-size-unit');
+      const qSummary = document.getElementById('q-summary');
+
+      let currentStep = 0;
+
+      function updateStepIndicator() {
+        stepsText.textContent = `Step ${currentStep + 1} of ${contactSlides.length}`;
+      }
+
+      function showStep(index) {
+        contactSlides.forEach((slide, i) => {
+          slide.classList.toggle('hidden', i !== index);
         });
+        currentStep = index;
+        updateStepIndicator();
+        backButton.disabled = currentStep === 0;
+        if (currentStep === contactSlides.length - 1) {
+          nextButton.textContent = 'Send Email';
+          nextButton.disabled = false;
+          renderSummary();
+        } else {
+          nextButton.textContent = 'Next';
+          validateStep();
+        }
+      }
+
+      function validateStep() {
+        let valid = false;
+        switch (currentStep) {
+          case 0:
+            valid = qName.value.trim() !== '' && qCompany.value.trim() !== '';
+            break;
+          case 1:
+            if (qRole.value === 'other') {
+              valid = qRoleOther.value.trim() !== '';
+            } else {
+              valid = qRole.value !== '';
+            }
+            break;
+          case 2:
+            valid = qAddress.value.trim() !== '';
+            break;
+          case 3:
+            valid = qSizeInput.value.trim() !== '' && parseFloat(qSizeInput.value) > 0;
+            break;
+          default:
+            valid = true;
+        }
+        nextButton.disabled = !valid;
+      }
+
+      function renderSummary() {
+        const role = qRole.value === 'other' ? qRoleOther.value : qRole.value;
+        qSummary.innerHTML = '';
+        [
+          `Name: ${qName.value}`,
+          `Company: ${qCompany.value}`,
+          `Role: ${role}`,
+          `Address: ${qAddress.value}`,
+          `Site size: ${qSizeInput.value} ${qSizeUnit.value}`,
+        ].forEach((text) => {
+          const li = document.createElement('li');
+          li.textContent = text;
+          qSummary.appendChild(li);
+        });
+      }
+
+      function sendEmail() {
+        const role = qRole.value === 'other' ? qRoleOther.value : qRole.value;
+        const body = `Name: ${qName.value}\nCompany: ${qCompany.value}\nRole: ${role}\nAddress: ${qAddress.value}\nSite size: ${qSizeInput.value} ${qSizeUnit.value}\n\nMessage:\n`;
+        const mailto = `mailto:enquiries@geofidelity.com?subject=${encodeURIComponent('Contact Form Submission')}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailto;
+        contactForm.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+      }
+
+      if (contactForm) {
+        showStep(0);
+
+        nextButton.addEventListener('click', () => {
+          if (currentStep === contactSlides.length - 1) {
+            sendEmail();
+          } else {
+            showStep(currentStep + 1);
+          }
+        });
+
+        backButton.addEventListener('click', () => {
+          if (currentStep > 0) {
+            showStep(currentStep - 1);
+          }
+        });
+
+        [qName, qCompany, qAddress, qRoleOther].forEach((el) => {
+          el.addEventListener('input', validateStep);
+        });
+
+        qRole.addEventListener('change', () => {
+          if (qRole.value === 'other') {
+            qRoleOtherWrapper.classList.remove('hidden');
+          } else {
+            qRoleOtherWrapper.classList.add('hidden');
+            qRoleOther.value = '';
+          }
+          validateStep();
+        });
+
+        qSizeSlider.addEventListener('input', () => {
+          qSizeInput.value = qSizeSlider.value;
+          validateStep();
+        });
+
+        qSizeInput.addEventListener('input', () => {
+          qSizeSlider.value = qSizeInput.value;
+          validateStep();
+        });
+
+        qSizeUnit.addEventListener('change', validateStep);
 
         resetButton.addEventListener('click', () => {
           successMessage.classList.add('hidden');
           contactForm.classList.remove('hidden');
+          [qName, qCompany, qRole, qRoleOther, qAddress, qSizeInput].forEach((el) => (el.value = ''));
+          qSizeSlider.value = 10;
+          qSizeInput.value = 10;
+          qSizeUnit.value = 'km²';
+          qRoleOtherWrapper.classList.add('hidden');
+          showStep(0);
         });
       }
     </script>
