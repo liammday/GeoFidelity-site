@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="GeoFidelity delivers precise geospatial data and mapping solutions." />
+    <meta
+      name="description"
+      content="GeoFidelity delivers precise geospatial data and mapping solutions."
+    />
     <title>GeoFidelity</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
@@ -93,51 +96,67 @@
   <body class="bg-gray-50 text-gray-900 antialiased">
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header class="fixed inset-x-0 top-0 z-50 bg-white shadow">
-      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4"
+      >
         <a href="#" class="flex items-center gap-2">
-          <img src="geofidelity-symbol.svg" alt="GeoFidelity logo" class="h-8 w-auto" />
+          <img
+            src="geofidelity-symbol.svg"
+            alt="GeoFidelity logo"
+            class="h-8 w-auto"
+          />
           <img src="geofidelity-wordmark.svg" alt="GeoFidelity" class="h-8" />
         </a>
         <button
-            id="menu-button"
-            type="button"
-            class="relative z-50 flex items-center justify-center rounded-md p-2 text-gray-600 focus:outline-none md:hidden"
-            aria-controls="mobile-menu"
-            aria-expanded="false"
+          id="menu-button"
+          type="button"
+          class="relative z-50 flex items-center justify-center rounded-md p-2 text-gray-600 focus:outline-none md:hidden"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            id="icon-menu"
+            class="h-6 w-6 transform transition duration-300 pointer-events-none"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              id="icon-menu"
-              class="h-6 w-6 transform transition duration-300 pointer-events-none"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg
-              id="icon-close"
-              class="absolute inset-0 m-auto h-6 w-6 transform opacity-0 -rotate-90 transition duration-300 pointer-events-none"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M6 6l12 12M6 18L18 6" />
-            </svg>
-          </button>
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg
+            id="icon-close"
+            class="absolute inset-0 m-auto h-6 w-6 transform opacity-0 -rotate-90 transition duration-300 pointer-events-none"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 6l12 12M6 18L18 6" />
+          </svg>
+        </button>
         <nav class="hidden gap-8 text-sm md:flex" id="desktop-menu">
-          <a href="#outcomes" class="text-gray-600 hover:text-gray-900">Outcomes</a>
-          <a href="#customers" class="text-gray-600 hover:text-gray-900">Customers</a>
-          <a href="#services" class="text-gray-600 hover:text-gray-900">Services</a>
-          <a href="#process" class="text-gray-600 hover:text-gray-900">Process</a>
+          <a href="#outcomes" class="text-gray-600 hover:text-gray-900"
+            >Outcomes</a
+          >
+          <a href="#customers" class="text-gray-600 hover:text-gray-900"
+            >Customers</a
+          >
+          <a href="#services" class="text-gray-600 hover:text-gray-900"
+            >Services</a
+          >
+          <a href="#process" class="text-gray-600 hover:text-gray-900"
+            >Process</a
+          >
           <a href="#about" class="text-gray-600 hover:text-gray-900">About</a>
-          <a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a>
+          <a href="#contact" class="text-gray-600 hover:text-gray-900"
+            >Contact</a
+          >
         </nav>
         <a
           href="#contact"
@@ -151,12 +170,24 @@
       class="fixed inset-x-0 top-0 z-40 hidden transform rounded-b-lg bg-gray-100 p-6 shadow-lg opacity-0 -translate-y-full pointer-events-none transition duration-300 md:hidden overflow-y-auto"
     >
       <nav class="flex flex-col gap-4 text-lg text-left">
-        <a href="#outcomes" class="w-full text-gray-600 hover:text-gray-900">Outcomes</a>
-        <a href="#customers" class="w-full text-gray-600 hover:text-gray-900">Customers</a>
-        <a href="#services" class="w-full text-gray-600 hover:text-gray-900">Services</a>
-        <a href="#process" class="w-full text-gray-600 hover:text-gray-900">Process</a>
-        <a href="#about" class="w-full text-gray-600 hover:text-gray-900">About</a>
-        <a href="#contact" class="w-full text-gray-600 hover:text-gray-900">Contact</a>
+        <a href="#outcomes" class="w-full text-gray-600 hover:text-gray-900"
+          >Outcomes</a
+        >
+        <a href="#customers" class="w-full text-gray-600 hover:text-gray-900"
+          >Customers</a
+        >
+        <a href="#services" class="w-full text-gray-600 hover:text-gray-900"
+          >Services</a
+        >
+        <a href="#process" class="w-full text-gray-600 hover:text-gray-900"
+          >Process</a
+        >
+        <a href="#about" class="w-full text-gray-600 hover:text-gray-900"
+          >About</a
+        >
+        <a href="#contact" class="w-full text-gray-600 hover:text-gray-900"
+          >Contact</a
+        >
         <a
           href="#contact"
           class="w-full rounded-md bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-500"
@@ -164,34 +195,98 @@
         >
       </nav>
     </div>
-    <div id="menu-overlay" class="fixed inset-0 z-30 hidden bg-black/20 opacity-0 transition-opacity duration-300 md:hidden"></div>
+    <div
+      id="menu-overlay"
+      class="fixed inset-0 z-30 hidden bg-black/20 opacity-0 transition-opacity duration-300 md:hidden"
+    ></div>
     <main id="main-content" class="pt-20">
       <section class="bg-white">
-        <div class="mx-auto max-w-7xl px-6 py-24 md:grid md:grid-cols-2 md:items-center md:gap-12">
+        <div
+          class="mx-auto max-w-7xl px-6 py-24 md:grid md:grid-cols-2 md:items-center md:gap-12"
+        >
           <div>
-            <p class="text-sm font-semibold uppercase tracking-wide text-indigo-600">Map accuracy &amp; verification</p>
-            <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+            <p
+              class="text-sm font-semibold uppercase tracking-wide text-indigo-600"
+            >
+              Map accuracy &amp; verification
+            </p>
+            <h1
+              class="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl"
+            >
               <span class="outline-text">Accurate</span> maps that work.
             </h1>
             <p class="mt-6 text-lg text-gray-600">
-              GeoFidelity checks and corrects OpenStreetMap so your site is findable and accessible across major map platforms.
-              Start with a simple audit and fix plan.
+              GeoFidelity checks and corrects OpenStreetMap so your site is
+              findable and accessible across major map platforms. Start with a
+              simple audit and fix plan.
             </p>
-          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a href="/contact" class="rounded-md bg-indigo-600 px-6 py-3 text-center font-medium text-white hover:bg-indigo-500">Request a Map Readiness Audit</a>
-              <a href="#process" class="px-6 py-3 text-center font-medium text-indigo-600 hover:underline">How it works</a>
+            <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="/contact"
+                class="rounded-md bg-indigo-600 px-6 py-3 text-center font-medium text-white hover:bg-indigo-500"
+                >Request a Map Readiness Audit</a
+              >
+              <a
+                href="#process"
+                class="px-6 py-3 text-center font-medium text-indigo-600 hover:underline"
+                >How it works</a
+              >
             </div>
-            <ul class="mt-8 grid gap-3 text-sm text-gray-700 sm:grid-cols-3 sm:gap-6">
-              <li class="flex items-start gap-2 justify-start sm:justify-center">
-                <svg class="h-5 w-5 text-indigo-600 flex-shrink-0" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            <ul
+              class="mt-8 grid gap-3 text-sm text-gray-700 sm:grid-cols-3 sm:gap-6"
+            >
+              <li
+                class="flex items-start gap-2 justify-start sm:justify-center"
+              >
+                <svg
+                  class="h-5 w-5 text-indigo-600 flex-shrink-0"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
                 <span>OSM-compliant editing</span>
               </li>
-              <li class="flex items-start gap-2 justify-start sm:justify-center">
-                <svg class="h-5 w-5 text-indigo-600 flex-shrink-0" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+              <li
+                class="flex items-start gap-2 justify-start sm:justify-center"
+              >
+                <svg
+                  class="h-5 w-5 text-indigo-600 flex-shrink-0"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
                 <span>Open data, properly attributed</span>
               </li>
-              <li class="flex items-start gap-2 justify-start sm:justify-center">
-                <svg class="h-5 w-5 text-indigo-600 flex-shrink-0" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+              <li
+                class="flex items-start gap-2 justify-start sm:justify-center"
+              >
+                <svg
+                  class="h-5 w-5 text-indigo-600 flex-shrink-0"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
                 <span>Cross-platform visibility</span>
               </li>
             </ul>
@@ -208,301 +303,507 @@
         </div>
       </section>
       <section class="bg-gray-900 text-white">
-        <div class="mx-auto flex max-w-7xl items-center justify-center px-6 py-4 text-sm">
-          <svg class="mr-2 h-5 w-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="M9 12l2 2 4-4"/>
+        <div
+          class="mx-auto flex max-w-7xl items-center justify-center px-6 py-4 text-sm"
+        >
+          <svg
+            class="mr-2 h-5 w-5"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M9 12l2 2 4-4" />
           </svg>
-          <span>Transparent, OSM-compliant editing with proper attribution and documented sources.</span>
+          <span
+            >Transparent, OSM-compliant editing with proper attribution and
+            documented sources.</span
+          >
         </div>
       </section>
-        <section id="outcomes" aria-labelledby="outcomes-heading" class="bg-gray-50 py-24">
-          <div class="mx-auto max-w-7xl px-6">
-            <h2 id="outcomes-heading" class="text-center text-3xl font-bold text-gray-900">
-              Outcomes
-            </h2>
-            <div class="mt-12 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-              <div>
-                <svg class="h-8 w-8 text-indigo-600" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                <h3 class="mt-4 text-xl font-semibold text-gray-900">Findable</h3>
-                <p class="mt-2 text-gray-600">
-                  Appear in the right place across OSM, Google and Apple.
-                </p>
-              </div>
-              <div>
-                <svg class="h-8 w-8 text-indigo-600" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                <h3 class="mt-4 text-xl font-semibold text-gray-900">Navigable</h3>
-                <p class="mt-2 text-gray-600">
-                  Correct entrances and paths reduce frustration.
-                </p>
-              </div>
-              <div>
-                <svg class="h-8 w-8 text-indigo-600" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                <h3 class="mt-4 text-xl font-semibold text-gray-900">Trustworthy</h3>
-                <p class="mt-2 text-gray-600">
-                  Visitors reach the right location first time.
-                </p>
-              </div>
+      <section
+        id="outcomes"
+        aria-labelledby="outcomes-heading"
+        class="bg-gray-50 py-24"
+      >
+        <div class="mx-auto max-w-7xl px-6">
+          <h2
+            id="outcomes-heading"
+            class="text-center text-3xl font-bold text-gray-900"
+          >
+            Outcomes
+          </h2>
+          <div
+            class="mt-12 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            <div>
+              <svg
+                class="h-8 w-8 text-indigo-600"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+              <h3 class="mt-4 text-xl font-semibold text-gray-900">Findable</h3>
+              <p class="mt-2 text-gray-600">
+                Appear in the right place across OSM, Google and Apple.
+              </p>
             </div>
-            <h3 class="sr-only">Before and After Map Impact</h3>
-            <div class="mt-12 grid gap-8 md:grid-cols-2">
-              <div class="flex flex-col rounded-lg bg-white p-6 shadow">
-                <img src="map-before.png" alt="Before map" class="w-full rounded" />
-                <h3 class="mt-4 text-xl font-semibold">Before</h3>
-                <p class="mt-2 text-gray-600">Missing paths, mis-pinned entrances, stale POIs. Visitors and deliveries struggle.</p>
-              </div>
-              <div class="flex flex-col rounded-lg bg-white p-6 shadow">
-                <img src="map-after.png" alt="After map" class="w-full rounded" />
-                <h3 class="mt-4 text-xl font-semibold">After</h3>
-                <p class="mt-2 text-gray-600">Correct trails, entrances, and amenities. Better routes, fewer mistakes, happier visitors.</p>
-              </div>
+            <div>
+              <svg
+                class="h-8 w-8 text-indigo-600"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+              <h3 class="mt-4 text-xl font-semibold text-gray-900">
+                Navigable
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Correct entrances and paths reduce frustration.
+              </p>
+            </div>
+            <div>
+              <svg
+                class="h-8 w-8 text-indigo-600"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+              <h3 class="mt-4 text-xl font-semibold text-gray-900">
+                Trustworthy
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Visitors reach the right location first time.
+              </p>
             </div>
           </div>
-        </section>
-        <section id="customers" aria-labelledby="customers-heading" class="bg-white py-24">
-          <div class="mx-auto max-w-7xl px-6">
-            <h2 id="customers-heading" class="text-center text-3xl font-bold text-gray-900">Customers</h2>
+          <h3 class="sr-only">Before and After Map Impact</h3>
+          <div class="mt-12 grid gap-8 md:grid-cols-2">
+            <div class="flex flex-col rounded-lg bg-white p-6 shadow">
+              <img
+                src="map-before.png"
+                alt="Before map"
+                class="w-full rounded"
+              />
+              <h3 class="mt-4 text-xl font-semibold">Before</h3>
+              <p class="mt-2 text-gray-600">
+                Missing paths, mis-pinned entrances, stale POIs. Visitors and
+                deliveries struggle.
+              </p>
+            </div>
+            <div class="flex flex-col rounded-lg bg-white p-6 shadow">
+              <img src="map-after.png" alt="After map" class="w-full rounded" />
+              <h3 class="mt-4 text-xl font-semibold">After</h3>
+              <p class="mt-2 text-gray-600">
+                Correct trails, entrances, and amenities. Better routes, fewer
+                mistakes, happier visitors.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="customers"
+        aria-labelledby="customers-heading"
+        class="bg-white py-24"
+      >
+        <div class="mx-auto max-w-7xl px-6">
+          <h2
+            id="customers-heading"
+            class="text-center text-3xl font-bold text-gray-900"
+          >
+            Customers
+          </h2>
 
-            <div class="mt-12">
-              <div class="flex border-b border-gray-200 text-sm" role="tablist">
-                <button
-                  class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold"
-                  data-client="housing"
-                  role="tab"
-                  aria-selected="true"
-                >
-                  Housing Development
-                </button>
-                <button
-                  class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
-                  data-client="recreation"
-                  role="tab"
-                  aria-selected="false"
-                >
-                  Recreational Site
-                </button>
-                <button
-                  class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
-                  data-client="park"
-                  role="tab"
-                  aria-selected="false"
-                >
-                  National Park
-                </button>
-              </div>
+          <div class="mt-12">
+            <div class="flex border-b border-gray-200 text-sm" role="tablist">
+              <button
+                class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold"
+                data-client="housing"
+                role="tab"
+                aria-selected="true"
+              >
+                Housing Development
+              </button>
+              <button
+                class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+                data-client="recreation"
+                role="tab"
+                aria-selected="false"
+              >
+                Recreational Site
+              </button>
+              <button
+                class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+                data-client="park"
+                role="tab"
+                aria-selected="false"
+              >
+                National Park
+              </button>
+            </div>
 
-              <div class="mt-8 grid gap-8 md:grid-cols-2">
-                <div>
-                  <h3 class="text-xl font-semibold">Before</h3>
-                  <ul id="before-list" class="mt-4 space-y-3"></ul>
-                </div>
-                <div>
-                  <h3 class="text-xl font-semibold">After</h3>
-                  <ul id="after-list" class="mt-4 space-y-3"></ul>
-                </div>
+            <div class="mt-8 grid gap-8 md:grid-cols-2">
+              <div>
+                <h3 class="text-xl font-semibold">Before</h3>
+                <ul id="before-list" class="mt-4 space-y-3"></ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">After</h3>
+                <ul id="after-list" class="mt-4 space-y-3"></ul>
               </div>
             </div>
           </div>
-        </section>
-        <section id="services" aria-labelledby="services-heading" class="bg-gray-50 py-24">
-          <div class="mx-auto max-w-7xl px-6">
-            <h2 id="services-heading" class="text-center text-3xl font-bold text-gray-900">Services</h2>
-            <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
-              <a href="/services" class="block rounded-lg bg-white p-6 shadow transition hover:shadow-md">
-                <h3 class="text-xl font-semibold text-gray-900">Map Readiness Audit</h3>
-                <p class="mt-2 text-gray-600">A clear report on how your site appears across OSM, Google and Apple, with a fix plan.</p>
-                <span class="mt-4 inline-flex items-center text-indigo-600">Learn more<span aria-hidden="true" class="ml-1">→</span></span>
-              </a>
-              <a href="/services" class="block rounded-lg bg-white p-6 shadow transition hover:shadow-md">
-                <h3 class="text-xl font-semibold text-gray-900">OSM Fixes</h3>
-                <p class="mt-2 text-gray-600">We correct and verify your site’s data in OSM so it appears correctly everywhere.</p>
-                <span class="mt-4 inline-flex items-center text-indigo-600">Learn more<span aria-hidden="true" class="ml-1">→</span></span>
-              </a>
-            </div>
+        </div>
+      </section>
+      <section
+        id="services"
+        aria-labelledby="services-heading"
+        class="bg-gray-50 py-24"
+      >
+        <div class="mx-auto max-w-7xl px-6">
+          <h2
+            id="services-heading"
+            class="text-center text-3xl font-bold text-gray-900"
+          >
+            Services
+          </h2>
+          <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+            <a
+              href="/services"
+              class="block rounded-lg bg-white p-6 shadow transition hover:shadow-md"
+            >
+              <h3 class="text-xl font-semibold text-gray-900">
+                Map Readiness Audit
+              </h3>
+              <p class="mt-2 text-gray-600">
+                A clear report on how your site appears across OSM, Google and
+                Apple, with a fix plan.
+              </p>
+              <span class="mt-4 inline-flex items-center text-indigo-600"
+                >Learn more<span aria-hidden="true" class="ml-1">→</span></span
+              >
+            </a>
+            <a
+              href="/services"
+              class="block rounded-lg bg-white p-6 shadow transition hover:shadow-md"
+            >
+              <h3 class="text-xl font-semibold text-gray-900">OSM Fixes</h3>
+              <p class="mt-2 text-gray-600">
+                We correct and verify your site’s data in OSM so it appears
+                correctly everywhere.
+              </p>
+              <span class="mt-4 inline-flex items-center text-indigo-600"
+                >Learn more<span aria-hidden="true" class="ml-1">→</span></span
+              >
+            </a>
           </div>
-        </section>
-        <section id="process" aria-labelledby="process-heading" class="bg-white py-24">
-          <div class="mx-auto max-w-7xl px-6">
-            <h2 id="process-heading" class="text-center text-3xl font-bold text-gray-900">Process</h2>
-            <ol class="mt-12 space-y-8 md:flex md:space-y-0 md:space-x-12">
-              <li class="flex items-start gap-4 md:flex-1">
-                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white" aria-label="Step 1">1</div>
-                <div>
-                  <h3 class="text-xl font-semibold">Audit</h3>
-                  <p class="mt-2 text-gray-600">Review OSM, Google and Apple for errors.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-4 md:flex-1">
-                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white" aria-label="Step 2">2</div>
-                <div>
-                  <h3 class="text-xl font-semibold">Fix</h3>
-                  <p class="mt-2 text-gray-600">Correct the issues directly in OSM.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-4 md:flex-1">
-                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white" aria-label="Step 3">3</div>
-                <div>
-                  <h3 class="text-xl font-semibold">Distribute</h3>
-                  <p class="mt-2 text-gray-600">Work with Apple and Google to pull OSM updates or submit changes directly.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-4 md:flex-1">
-                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white" aria-label="Step 4">4</div>
-                <div>
-                  <h3 class="text-xl font-semibold">Verify</h3>
-                  <p class="mt-2 text-gray-600">Confirm your site appears correctly across platforms.</p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </section>
-      <section id="about" aria-labelledby="about-heading" class="bg-gray-50 py-24">
+        </div>
+      </section>
+      <section
+        id="process"
+        aria-labelledby="process-heading"
+        class="bg-white py-24"
+      >
+        <div class="mx-auto max-w-7xl px-6">
+          <h2
+            id="process-heading"
+            class="text-center text-3xl font-bold text-gray-900"
+          >
+            Process
+          </h2>
+          <ol class="mt-12 space-y-8 md:flex md:space-y-0 md:space-x-12">
+            <li class="flex items-start gap-4 md:flex-1">
+              <div
+                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+                aria-label="Step 1"
+              >
+                1
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">Audit</h3>
+                <p class="mt-2 text-gray-600">
+                  Review OSM, Google and Apple for errors.
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4 md:flex-1">
+              <div
+                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+                aria-label="Step 2"
+              >
+                2
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">Fix</h3>
+                <p class="mt-2 text-gray-600">
+                  Correct the issues directly in OSM.
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4 md:flex-1">
+              <div
+                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+                aria-label="Step 3"
+              >
+                3
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">Distribute</h3>
+                <p class="mt-2 text-gray-600">
+                  Work with Apple and Google to pull OSM updates or submit
+                  changes directly.
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4 md:flex-1">
+              <div
+                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+                aria-label="Step 4"
+              >
+                4
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">Verify</h3>
+                <p class="mt-2 text-gray-600">
+                  Confirm your site appears correctly across platforms.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section
+        id="about"
+        aria-labelledby="about-heading"
+        class="bg-gray-50 py-24"
+      >
         <div class="mx-auto max-w-3xl px-6 text-center">
-          <h2 id="about-heading" class="text-center text-3xl font-bold text-gray-900">About</h2>
+          <h2
+            id="about-heading"
+            class="text-center text-3xl font-bold text-gray-900"
+          >
+            About
+          </h2>
           <p class="mt-6 text-lg text-gray-600">
-            We help organisations ensure their site is mapped correctly so visitors, customers and deliveries can find them without hassle.
+            We help organisations ensure their site is mapped correctly so
+            visitors, customers and deliveries can find them without hassle.
           </p>
         </div>
       </section>
-      <section class="bg-indigo-600 py-24 text-white" aria-labelledby="primary-cta-heading">
+      <section
+        class="bg-indigo-600 py-24 text-white"
+        aria-labelledby="primary-cta-heading"
+      >
         <div class="mx-auto max-w-3xl px-6 text-center">
-          <h2 id="primary-cta-heading" class="text-center text-3xl font-bold">Ready to fix your maps?</h2>
-          <p class="mt-4 text-lg text-indigo-100">Start with a quick Map Readiness Audit and a clear, fixed-price plan.</p>
-          <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="/contact" class="rounded-md bg-white px-6 py-3 font-medium text-indigo-600 hover:bg-indigo-50">Request an Audit</a>
-            <a href="#sample-report" class="px-6 py-3 font-medium text-white hover:underline">See a sample report</a>
+          <h2 id="primary-cta-heading" class="text-center text-3xl font-bold">
+            Ready to fix your maps?
+          </h2>
+          <p class="mt-4 text-lg text-indigo-100">
+            Start with a quick Map Readiness Audit and a clear, fixed-price
+            plan.
+          </p>
+          <div
+            class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          >
+            <a
+              href="/contact"
+              class="rounded-md bg-white px-6 py-3 font-medium text-indigo-600 hover:bg-indigo-50"
+              >Request an Audit</a
+            >
+            <a
+              href="#sample-report"
+              class="px-6 py-3 font-medium text-white hover:underline"
+              >See a sample report</a
+            >
           </div>
         </div>
       </section>
-      <section id="contact" aria-labelledby="contact-heading" class="bg-white py-24">
+      <section
+        id="contact"
+        aria-labelledby="contact-heading"
+        class="bg-gray-50 py-24"
+      >
         <div class="mx-auto max-w-xl px-6">
-          <h2 id="contact-heading" class="text-center text-3xl font-bold text-gray-900">Contact</h2>
-          <div id="contact-form" class="mt-8">
-            <p id="contact-steps" class="mb-4 text-center text-sm text-gray-500">Step 1 of 5</p>
-            <div class="space-y-4">
-              <div class="contact-slide space-y-4" data-step="1">
-                <div>
-                  <label for="q-name" class="sr-only">Name</label>
+          <h2
+            id="contact-heading"
+            class="text-center text-3xl font-bold text-gray-900"
+          >
+            Contact
+          </h2>
+          <div class="mt-8 rounded-lg bg-white p-6 shadow">
+            <div id="contact-form">
+              <p
+                id="contact-steps"
+                class="mb-4 text-center text-sm text-gray-500"
+              >
+                Step 1 of 5
+              </p>
+              <div class="space-y-4">
+                <div class="contact-slide space-y-4" data-step="1">
+                  <div>
+                    <label for="q-name" class="sr-only">Name</label>
+                    <input
+                      id="q-name"
+                      name="name"
+                      type="text"
+                      placeholder="Name"
+                      autocomplete="name"
+                      required
+                      class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div>
+                    <label for="q-company" class="sr-only">Company</label>
+                    <input
+                      id="q-company"
+                      name="company"
+                      type="text"
+                      placeholder="Company"
+                      autocomplete="organization"
+                      required
+                      class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                  </div>
+                </div>
+                <div class="contact-slide hidden space-y-4" data-step="2">
+                  <div>
+                    <label for="q-role" class="sr-only"
+                      >Company type or role</label
+                    >
+                    <select
+                      id="q-role"
+                      name="role"
+                      class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                      required
+                    >
+                      <option value="">Select company type/role</option>
+                      <option>Developer</option>
+                      <option>Planner</option>
+                      <option>Government</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div id="q-role-other-wrapper" class="hidden">
+                    <label for="q-role-other" class="sr-only">Other role</label>
+                    <input
+                      id="q-role-other"
+                      type="text"
+                      placeholder="Please specify"
+                      class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                  </div>
+                </div>
+                <div class="contact-slide hidden" data-step="3">
+                  <label for="q-address" class="sr-only">Address</label>
                   <input
-                    id="q-name"
-                    name="name"
+                    id="q-address"
+                    name="address"
                     type="text"
-                    placeholder="Name"
+                    placeholder="Address"
+                    autocomplete="street-address"
                     required
                     class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
                   />
                 </div>
-                <div>
-                  <label for="q-company" class="sr-only">Company</label>
-                  <input
-                    id="q-company"
-                    name="company"
-                    type="text"
-                    placeholder="Company"
-                    required
-                    class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
-                  />
-                </div>
-              </div>
-              <div class="contact-slide hidden space-y-4" data-step="2">
-                <div>
-                  <label for="q-role" class="sr-only">Company type or role</label>
-                  <select
-                    id="q-role"
-                    name="role"
-                    class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
-                    required
+                <div class="contact-slide hidden space-y-4" data-step="4">
+                  <label
+                    for="q-size-slider"
+                    class="text-sm font-medium text-gray-700"
+                    >Approximate site size</label
                   >
-                    <option value="">Select company type/role</option>
-                    <option>Developer</option>
-                    <option>Planner</option>
-                    <option>Government</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div id="q-role-other-wrapper" class="hidden">
-                  <label for="q-role-other" class="sr-only">Other role</label>
                   <input
-                    id="q-role-other"
-                    type="text"
-                    placeholder="Please specify"
-                    class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
-                  />
-                </div>
-              </div>
-              <div class="contact-slide hidden" data-step="3">
-                <label for="q-address" class="sr-only">Address</label>
-                <input
-                  id="q-address"
-                  type="text"
-                  placeholder="Address"
-                  required
-                  class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
-                />
-              </div>
-              <div class="contact-slide hidden space-y-4" data-step="4">
-                <label for="q-size-slider" class="text-sm font-medium text-gray-700">Approximate site size</label>
-                <input id="q-size-slider" type="range" min="0" max="1000" value="10" class="w-full" />
-                <div class="flex items-center gap-2">
-                  <input
-                    id="q-size-input"
-                    type="number"
+                    id="q-size-slider"
+                    type="range"
                     min="0"
-                    max="1000"
+                    max="100"
                     value="10"
-                    class="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                    class="w-full"
                   />
-                  <select
-                    id="q-size-unit"
-                    class="rounded-md border border-gray-300 px-2 py-2 focus:border-indigo-500 focus:ring-indigo-500"
-                  >
-                    <option value="km²">km²</option>
-                    <option value="mi²">mi²</option>
-                  </select>
+                  <div class="flex items-center gap-2">
+                    <input
+                      id="q-size-input"
+                      type="number"
+                      min="0"
+                      value="10"
+                      class="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                    <select
+                      id="q-size-unit"
+                      class="rounded-md border border-gray-300 px-2 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                    >
+                      <option value="km²">km²</option>
+                      <option value="mi²">mi²</option>
+                    </select>
+                  </div>
+                  <p class="text-xs text-gray-500">
+                    To enter a value over 100, scroll the slider to the top
+                    first, then type a higher number.
+                  </p>
+                </div>
+                <div class="contact-slide hidden space-y-4" data-step="5">
+                  <p class="text-gray-700">Please confirm your details:</p>
+                  <ul id="q-summary" class="space-y-1 text-gray-900"></ul>
+                  <p class="text-sm text-gray-500">
+                    Your email client will open allowing you to add more
+                    details.
+                  </p>
                 </div>
               </div>
-              <div class="contact-slide hidden space-y-4" data-step="5">
-                <p class="text-gray-700">Please confirm your details:</p>
-                <ul id="q-summary" class="space-y-1 text-gray-900"></ul>
-                <p class="text-sm text-gray-500">Your email client will open allowing you to add more details.</p>
+              <div class="mt-6 flex justify-between">
+                <button
+                  id="contact-back"
+                  type="button"
+                  class="rounded-md bg-gray-200 px-4 py-2 text-gray-700 disabled:opacity-50"
+                  disabled
+                >
+                  Back
+                </button>
+                <button
+                  id="contact-next"
+                  type="button"
+                  class="rounded-md bg-indigo-600 px-6 py-3 font-medium text-white disabled:opacity-50"
+                  disabled
+                >
+                  Next
+                </button>
               </div>
             </div>
-            <div class="mt-6 flex justify-between">
+            <div id="contact-success" class="hidden text-center">
+              <p class="text-lg font-medium text-gray-900">
+                Your email client should now be open with a pre-filled message.
+                Please continue there to send your message.
+              </p>
               <button
-                id="contact-back"
+                id="contact-reset"
                 type="button"
-                class="rounded-md bg-gray-200 px-4 py-2 text-gray-700 disabled:opacity-50"
-                disabled
+                class="mt-4 rounded-md bg-indigo-600 px-6 py-3 font-medium text-white hover:bg-indigo-500"
               >
-                Back
-              </button>
-              <button
-                id="contact-next"
-                type="button"
-                class="rounded-md bg-indigo-600 px-6 py-3 font-medium text-white disabled:opacity-50"
-                disabled
-              >
-                Next
+                Send another message
               </button>
             </div>
-          </div>
-          <div id="contact-success" class="mt-8 hidden text-center">
-            <p class="text-lg font-medium text-gray-900">
-              Your email client should now be open with a pre-filled message. Please continue there to send your message.
-            </p>
-            <button
-              id="contact-reset"
-              type="button"
-              class="mt-4 rounded-md bg-indigo-600 px-6 py-3 font-medium text-white hover:bg-indigo-500"
-            >
-              Send another message
-            </button>
           </div>
         </div>
       </section>
@@ -513,13 +814,15 @@
       </div>
     </footer>
     <script>
-      const motionOK = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
-      document.getElementById('year').textContent = new Date().getFullYear();
+      const motionOK = window.matchMedia(
+        "(prefers-reduced-motion: no-preference)",
+      ).matches;
+      document.getElementById("year").textContent = new Date().getFullYear();
       (function () {
-        const slider = document.getElementById('hero-slider');
+        const slider = document.getElementById("hero-slider");
         if (!slider) return;
-        const afterWrapper = document.getElementById('hero-after-wrapper');
-        const divider = document.getElementById('hero-divider');
+        const afterWrapper = document.getElementById("hero-after-wrapper");
+        const divider = document.getElementById("hero-divider");
         const BOUNCE_MIN = 0.4;
         const BOUNCE_MAX = 0.6;
         const state = { p: BOUNCE_MIN };
@@ -547,7 +850,7 @@
           moveTween = gsap.to(state, {
             p: clamp(p),
             duration: 0.3,
-            ease: 'power1.out',
+            ease: "power1.out",
             onUpdate: applyPos,
           });
         }
@@ -562,7 +865,7 @@
             duration: 3,
             repeat: -1,
             yoyo: true,
-            ease: 'power1.inOut',
+            ease: "power1.inOut",
             onUpdate: applyPos,
           });
         }
@@ -577,7 +880,7 @@
             gsap.to(state, {
               p: BOUNCE_MIN,
               duration: 0.5,
-              ease: 'power1.inOut',
+              ease: "power1.inOut",
               onUpdate: applyPos,
               onComplete: startBounce,
             });
@@ -596,11 +899,11 @@
           }
           queueBounceRestart();
         }
-        slider.addEventListener('pointerenter', (e) => {
+        slider.addEventListener("pointerenter", (e) => {
           stopBounce();
           update(e);
         });
-        slider.addEventListener('pointermove', (e) => {
+        slider.addEventListener("pointermove", (e) => {
           if (dragging) {
             update(e, true);
           } else if (e.buttons === 0) {
@@ -608,7 +911,7 @@
             update(e);
           }
         });
-        slider.addEventListener('pointerdown', (e) => {
+        slider.addEventListener("pointerdown", (e) => {
           dragging = true;
           slider.setPointerCapture(e.pointerId);
           stopBounce();
@@ -618,145 +921,152 @@
           dragging = false;
           queueBounceRestart();
         }
-        slider.addEventListener('pointerup', release);
-        slider.addEventListener('pointercancel', release);
+        slider.addEventListener("pointerup", release);
+        slider.addEventListener("pointercancel", release);
       })();
-        const menuButton = document.getElementById('menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const openIcon = document.getElementById('icon-menu');
-        const closeIcon = document.getElementById('icon-close');
-        const menuLinks = mobileMenu.querySelectorAll('a');
-        const overlay = document.getElementById('menu-overlay');
-        const header = document.querySelector('header');
+      const menuButton = document.getElementById("menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const openIcon = document.getElementById("icon-menu");
+      const closeIcon = document.getElementById("icon-close");
+      const menuLinks = mobileMenu.querySelectorAll("a");
+      const overlay = document.getElementById("menu-overlay");
+      const header = document.querySelector("header");
 
-        function openMenu() {
-          const topOffset = header.offsetHeight;
-          mobileMenu.style.top = `${topOffset}px`;
-          mobileMenu.style.maxHeight = `calc(100vh - ${topOffset}px)`;
-          mobileMenu.classList.remove('hidden', 'pointer-events-none');
-          overlay.classList.remove('hidden');
-          requestAnimationFrame(() => {
-            mobileMenu.classList.add('translate-y-0', 'opacity-100');
-            mobileMenu.classList.remove('-translate-y-full', 'opacity-0');
-            overlay.classList.add('opacity-100');
-          });
-          document.body.classList.add('overflow-hidden', 'menu-open');
-          openIcon.classList.add('opacity-0', 'rotate-90');
-          closeIcon.classList.remove('opacity-0', '-rotate-90');
-          menuButton.classList.add('bg-indigo-600', 'text-white', 'rounded-full');
-          menuButton.classList.remove('text-gray-600');
-        }
-
-        function closeMenu() {
-          mobileMenu.classList.add('-translate-y-full', 'opacity-0');
-          mobileMenu.classList.remove('translate-y-0', 'opacity-100');
-          overlay.classList.remove('opacity-100');
-          overlay.classList.add('opacity-0');
-          document.body.classList.remove('overflow-hidden', 'menu-open');
-          openIcon.classList.remove('opacity-0', 'rotate-90');
-          closeIcon.classList.add('opacity-0', '-rotate-90');
-          menuButton.classList.remove('bg-indigo-600', 'text-white', 'rounded-full');
-          menuButton.classList.add('text-gray-600');
-          overlay.addEventListener(
-            'transitionend',
-            (e) => {
-              if (e.target === overlay) {
-                overlay.classList.add('hidden');
-              }
-            },
-            { once: true }
-          );
-          mobileMenu.addEventListener(
-            'transitionend',
-            (e) => {
-              if (e.target === mobileMenu) {
-                mobileMenu.classList.add('hidden', 'pointer-events-none');
-                mobileMenu.style.top = '';
-                mobileMenu.style.maxHeight = '';
-              }
-            },
-            { once: true }
-          );
-        }
-
-        menuButton.addEventListener('click', () => {
-          const expanded = menuButton.getAttribute('aria-expanded') === 'true';
-          if (expanded) {
-            closeMenu();
-          } else {
-            openMenu();
-          }
-          menuButton.setAttribute('aria-expanded', String(!expanded));
+      function openMenu() {
+        const topOffset = header.offsetHeight;
+        mobileMenu.style.top = `${topOffset}px`;
+        mobileMenu.style.maxHeight = `calc(100vh - ${topOffset}px)`;
+        mobileMenu.classList.remove("hidden", "pointer-events-none");
+        overlay.classList.remove("hidden");
+        requestAnimationFrame(() => {
+          mobileMenu.classList.add("translate-y-0", "opacity-100");
+          mobileMenu.classList.remove("-translate-y-full", "opacity-0");
+          overlay.classList.add("opacity-100");
         });
+        document.body.classList.add("overflow-hidden", "menu-open");
+        openIcon.classList.add("opacity-0", "rotate-90");
+        closeIcon.classList.remove("opacity-0", "-rotate-90");
+        menuButton.classList.add("bg-indigo-600", "text-white", "rounded-full");
+        menuButton.classList.remove("text-gray-600");
+      }
 
-        menuLinks.forEach((link) => {
-          link.addEventListener('click', () => {
-            menuButton.setAttribute('aria-expanded', 'false');
-            closeMenu();
-          });
-        });
+      function closeMenu() {
+        mobileMenu.classList.add("-translate-y-full", "opacity-0");
+        mobileMenu.classList.remove("translate-y-0", "opacity-100");
+        overlay.classList.remove("opacity-100");
+        overlay.classList.add("opacity-0");
+        document.body.classList.remove("overflow-hidden", "menu-open");
+        openIcon.classList.remove("opacity-0", "rotate-90");
+        closeIcon.classList.add("opacity-0", "-rotate-90");
+        menuButton.classList.remove(
+          "bg-indigo-600",
+          "text-white",
+          "rounded-full",
+        );
+        menuButton.classList.add("text-gray-600");
+        overlay.addEventListener(
+          "transitionend",
+          (e) => {
+            if (e.target === overlay) {
+              overlay.classList.add("hidden");
+            }
+          },
+          { once: true },
+        );
+        mobileMenu.addEventListener(
+          "transitionend",
+          (e) => {
+            if (e.target === mobileMenu) {
+              mobileMenu.classList.add("hidden", "pointer-events-none");
+              mobileMenu.style.top = "";
+              mobileMenu.style.maxHeight = "";
+            }
+          },
+          { once: true },
+        );
+      }
 
-        overlay.addEventListener('click', () => {
-          menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.addEventListener("click", () => {
+        const expanded = menuButton.getAttribute("aria-expanded") === "true";
+        if (expanded) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+        menuButton.setAttribute("aria-expanded", String(!expanded));
+      });
+
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          menuButton.setAttribute("aria-expanded", "false");
           closeMenu();
         });
+      });
 
-        let headerHeight;
-        function updateScrollPadding() {
-          headerHeight = header.offsetHeight;
-          document.documentElement.style.scrollPaddingTop = `${headerHeight}px`;
-          document.documentElement.style.setProperty('--nav-height', `${headerHeight}px`);
-        }
-        window.addEventListener('load', updateScrollPadding);
-        window.addEventListener('resize', () => {
-          updateScrollPadding();
-          onScroll();
-        });
+      overlay.addEventListener("click", () => {
+        menuButton.setAttribute("aria-expanded", "false");
+        closeMenu();
+      });
+
+      let headerHeight;
+      function updateScrollPadding() {
+        headerHeight = header.offsetHeight;
+        document.documentElement.style.scrollPaddingTop = `${headerHeight}px`;
+        document.documentElement.style.setProperty(
+          "--nav-height",
+          `${headerHeight}px`,
+        );
+      }
+      window.addEventListener("load", updateScrollPadding);
+      window.addEventListener("resize", () => {
         updateScrollPadding();
+        onScroll();
+      });
+      updateScrollPadding();
 
-        const sectionEls = Array.from(document.querySelectorAll('section[id]'));
-        const linkMap = {};
-        document
-          .querySelectorAll('#desktop-menu a, #mobile-menu a')
-          .forEach((link) => {
-            const id = link.getAttribute('href').slice(1);
-            (linkMap[id] ||= []).push(link);
+      const sectionEls = Array.from(document.querySelectorAll("section[id]"));
+      const linkMap = {};
+      document
+        .querySelectorAll("#desktop-menu a, #mobile-menu a")
+        .forEach((link) => {
+          const id = link.getAttribute("href").slice(1);
+          (linkMap[id] ||= []).push(link);
+        });
+      const activeClasses = ["text-gray-900", "font-semibold"];
+      const inactiveClasses = ["text-gray-600"];
+      function setActive(id) {
+        Object.values(linkMap).forEach((links) =>
+          links.forEach((l) => {
+            l.classList.remove(...activeClasses);
+            l.classList.add(...inactiveClasses);
+          }),
+        );
+        if (id && linkMap[id]) {
+          linkMap[id].forEach((l) => {
+            l.classList.remove(...inactiveClasses);
+            l.classList.add(...activeClasses);
           });
-        const activeClasses = ['text-gray-900', 'font-semibold'];
-        const inactiveClasses = ['text-gray-600'];
-        function setActive(id) {
-          Object.values(linkMap).forEach((links) =>
-            links.forEach((l) => {
-              l.classList.remove(...activeClasses);
-              l.classList.add(...inactiveClasses);
-            })
-          );
-          if (id && linkMap[id]) {
-            linkMap[id].forEach((l) => {
-              l.classList.remove(...inactiveClasses);
-              l.classList.add(...activeClasses);
-            });
+        }
+      }
+      function onScroll() {
+        const scrollPos = window.scrollY + headerHeight + 1;
+        let currentId = null;
+        for (const section of sectionEls) {
+          if (scrollPos >= section.offsetTop) {
+            currentId = section.id;
+          } else {
+            break;
           }
         }
-        function onScroll() {
-          const scrollPos = window.scrollY + headerHeight + 1;
-          let currentId = null;
-          for (const section of sectionEls) {
-            if (scrollPos >= section.offsetTop) {
-              currentId = section.id;
-            } else {
-              break;
-            }
-          }
-          setActive(currentId);
-        }
-        window.addEventListener('scroll', onScroll);
-        window.addEventListener('load', onScroll);
+        setActive(currentId);
+      }
+      window.addEventListener("scroll", onScroll);
+      window.addEventListener("load", onScroll);
 
       if (motionOK) {
         gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray('section:not(:first-of-type)').forEach((section) => {
-          const content = section.querySelector(':scope > *');
+        gsap.utils.toArray("section:not(:first-of-type)").forEach((section) => {
+          const content = section.querySelector(":scope > *");
           if (content) {
             gsap.fromTo(
               content,
@@ -765,11 +1075,11 @@
                 opacity: 1,
                 scrollTrigger: {
                   trigger: section,
-                  start: 'top 90%',
-                  end: 'top 50%',
+                  start: "top 90%",
+                  end: "top 50%",
                   scrub: true,
                 },
-              }
+              },
             );
           }
         });
@@ -778,45 +1088,90 @@
       const scenarios = {
         housing: {
           before: [
-            { text: 'Navigation apps lead visitors to wrong entrances.', positive: false },
-            { text: 'Delivery drivers struggle to find addresses.', positive: false },
-            { text: 'Emergency response times increase due to map errors.', positive: false },
+            {
+              text: "Navigation apps lead visitors to wrong entrances.",
+              positive: false,
+            },
+            {
+              text: "Delivery drivers struggle to find addresses.",
+              positive: false,
+            },
+            {
+              text: "Emergency response times increase due to map errors.",
+              positive: false,
+            },
           ],
           after: [
-            { text: 'Correct entrance data ensures seamless arrivals.', positive: true },
-            { text: 'Accurate addresses reduce delivery delays.', positive: true },
-            { text: 'Emergency services reach locations quickly.', positive: true },
+            {
+              text: "Correct entrance data ensures seamless arrivals.",
+              positive: true,
+            },
+            {
+              text: "Accurate addresses reduce delivery delays.",
+              positive: true,
+            },
+            {
+              text: "Emergency services reach locations quickly.",
+              positive: true,
+            },
           ],
         },
         recreation: {
           before: [
-            { text: 'Trails are missing or misaligned on maps.', positive: false },
-            { text: 'Guests can\u2019t find parking or amenities.', positive: false },
-            { text: 'Visitors get lost due to outdated info.', positive: false },
+            {
+              text: "Trails are missing or misaligned on maps.",
+              positive: false,
+            },
+            {
+              text: "Guests can\u2019t find parking or amenities.",
+              positive: false,
+            },
+            {
+              text: "Visitors get lost due to outdated info.",
+              positive: false,
+            },
           ],
           after: [
-            { text: 'Mapped trails guide hikers effectively.', positive: true },
-            { text: 'Facilities and parking clearly marked.', positive: true },
-            { text: 'Up-to-date info improves visitor experience.', positive: true },
+            { text: "Mapped trails guide hikers effectively.", positive: true },
+            { text: "Facilities and parking clearly marked.", positive: true },
+            {
+              text: "Up-to-date info improves visitor experience.",
+              positive: true,
+            },
           ],
         },
         park: {
           before: [
-            { text: 'Boundary lines are inaccurate causing confusion.', positive: false },
-            { text: 'Points of interest are misplaced or missing.', positive: false },
-            { text: 'Offline maps fail in remote areas.', positive: false },
+            {
+              text: "Boundary lines are inaccurate causing confusion.",
+              positive: false,
+            },
+            {
+              text: "Points of interest are misplaced or missing.",
+              positive: false,
+            },
+            { text: "Offline maps fail in remote areas.", positive: false },
           ],
           after: [
-            { text: 'Precise boundaries protect sensitive areas.', positive: true },
-            { text: 'Landmarks and trails accurately represented.', positive: true },
-            { text: 'Offline-ready data supports remote access.', positive: true },
+            {
+              text: "Precise boundaries protect sensitive areas.",
+              positive: true,
+            },
+            {
+              text: "Landmarks and trails accurately represented.",
+              positive: true,
+            },
+            {
+              text: "Offline-ready data supports remote access.",
+              positive: true,
+            },
           ],
         },
       };
 
-      const beforeList = document.getElementById('before-list');
-      const afterList = document.getElementById('after-list');
-      const tabs = document.querySelectorAll('.client-tab');
+      const beforeList = document.getElementById("before-list");
+      const afterList = document.getElementById("after-list");
+      const tabs = document.querySelectorAll(".client-tab");
 
       const icons = {
         positive:
@@ -829,23 +1184,27 @@
         const data = scenarios[type];
         const oldItems = [...beforeList.children, ...afterList.children];
         const populate = () => {
-          beforeList.innerHTML = '';
-          afterList.innerHTML = '';
+          beforeList.innerHTML = "";
+          afterList.innerHTML = "";
           data.before.forEach((item) => {
-            const li = document.createElement('li');
-            li.className = 'flex items-start gap-2';
-            li.innerHTML = `${icons[item.positive ? 'positive' : 'negative']}<span>${item.text}</span>`;
+            const li = document.createElement("li");
+            li.className = "flex items-start gap-2";
+            li.innerHTML = `${icons[item.positive ? "positive" : "negative"]}<span>${item.text}</span>`;
             beforeList.appendChild(li);
           });
           data.after.forEach((item) => {
-            const li = document.createElement('li');
-            li.className = 'flex items-start gap-2';
-            li.innerHTML = `${icons[item.positive ? 'positive' : 'negative']}<span>${item.text}</span>`;
+            const li = document.createElement("li");
+            li.className = "flex items-start gap-2";
+            li.innerHTML = `${icons[item.positive ? "positive" : "negative"]}<span>${item.text}</span>`;
             afterList.appendChild(li);
           });
           const newItems = [...beforeList.children, ...afterList.children];
           if (motionOK) {
-            gsap.fromTo(newItems, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.05 });
+            gsap.fromTo(
+              newItems,
+              { opacity: 0, y: -10 },
+              { opacity: 1, y: 0, duration: 0.2, stagger: 0.05 },
+            );
           }
         };
         if (oldItems.length && motionOK) {
@@ -860,56 +1219,60 @@
         }
       }
 
-        tabs.forEach((tab) => {
-          tab.addEventListener('click', () => {
-            if (tab.getAttribute('aria-selected') === 'true') return;
-            tabs.forEach((t) => {
-              t.classList.remove(
-                'border-indigo-600',
-                'text-indigo-600',
-                'font-semibold',
-                'hover:text-gray-900'
-              );
-              t.classList.add(
-                'border-transparent',
-                'text-gray-600',
-                'font-normal',
-                'hover:text-gray-900'
-              );
-              t.setAttribute('aria-selected', 'false');
-            });
-            tab.classList.remove(
-              'border-transparent',
-              'text-gray-600',
-              'font-normal',
-              'hover:text-gray-900'
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          if (tab.getAttribute("aria-selected") === "true") return;
+          tabs.forEach((t) => {
+            t.classList.remove(
+              "border-indigo-600",
+              "text-indigo-600",
+              "font-semibold",
+              "hover:text-gray-900",
             );
-            tab.classList.add('border-indigo-600', 'text-indigo-600', 'font-semibold');
-            tab.setAttribute('aria-selected', 'true');
-            renderLists(tab.dataset.client);
+            t.classList.add(
+              "border-transparent",
+              "text-gray-600",
+              "font-normal",
+              "hover:text-gray-900",
+            );
+            t.setAttribute("aria-selected", "false");
           });
+          tab.classList.remove(
+            "border-transparent",
+            "text-gray-600",
+            "font-normal",
+            "hover:text-gray-900",
+          );
+          tab.classList.add(
+            "border-indigo-600",
+            "text-indigo-600",
+            "font-semibold",
+          );
+          tab.setAttribute("aria-selected", "true");
+          renderLists(tab.dataset.client);
         });
+      });
 
-      renderLists('housing');
+      renderLists("housing");
 
-      const contactForm = document.getElementById('contact-form');
-      const contactSlides = document.querySelectorAll('.contact-slide');
-      const nextButton = document.getElementById('contact-next');
-      const backButton = document.getElementById('contact-back');
-      const stepsText = document.getElementById('contact-steps');
-      const successMessage = document.getElementById('contact-success');
-      const resetButton = document.getElementById('contact-reset');
+      const contactForm = document.getElementById("contact-form");
+      const contactSlides = document.querySelectorAll(".contact-slide");
+      const nextButton = document.getElementById("contact-next");
+      const backButton = document.getElementById("contact-back");
+      const stepsText = document.getElementById("contact-steps");
+      const successMessage = document.getElementById("contact-success");
+      const resetButton = document.getElementById("contact-reset");
 
-      const qName = document.getElementById('q-name');
-      const qCompany = document.getElementById('q-company');
-      const qRole = document.getElementById('q-role');
-      const qRoleOtherWrapper = document.getElementById('q-role-other-wrapper');
-      const qRoleOther = document.getElementById('q-role-other');
-      const qAddress = document.getElementById('q-address');
-      const qSizeSlider = document.getElementById('q-size-slider');
-      const qSizeInput = document.getElementById('q-size-input');
-      const qSizeUnit = document.getElementById('q-size-unit');
-      const qSummary = document.getElementById('q-summary');
+      const qName = document.getElementById("q-name");
+      const qCompany = document.getElementById("q-company");
+      const qRole = document.getElementById("q-role");
+      const qRoleOtherWrapper = document.getElementById("q-role-other-wrapper");
+      const qRoleOther = document.getElementById("q-role-other");
+      const qAddress = document.getElementById("q-address");
+      const qSizeSlider = document.getElementById("q-size-slider");
+      const qSizeInput = document.getElementById("q-size-input");
+      const qSizeUnit = document.getElementById("q-size-unit");
+      const qSummary = document.getElementById("q-summary");
 
       let currentStep = 0;
 
@@ -919,17 +1282,17 @@
 
       function showStep(index) {
         contactSlides.forEach((slide, i) => {
-          slide.classList.toggle('hidden', i !== index);
+          slide.classList.toggle("hidden", i !== index);
         });
         currentStep = index;
         updateStepIndicator();
         backButton.disabled = currentStep === 0;
         if (currentStep === contactSlides.length - 1) {
-          nextButton.textContent = 'Send Email';
+          nextButton.textContent = "Send Email";
           nextButton.disabled = false;
           renderSummary();
         } else {
-          nextButton.textContent = 'Next';
+          nextButton.textContent = "Next";
           validateStep();
         }
       }
@@ -938,20 +1301,22 @@
         let valid = false;
         switch (currentStep) {
           case 0:
-            valid = qName.value.trim() !== '' && qCompany.value.trim() !== '';
+            valid = qName.value.trim() !== "" && qCompany.value.trim() !== "";
             break;
           case 1:
-            if (qRole.value === 'other') {
-              valid = qRoleOther.value.trim() !== '';
+            if (qRole.value === "other") {
+              valid = qRoleOther.value.trim() !== "";
             } else {
-              valid = qRole.value !== '';
+              valid = qRole.value !== "";
             }
             break;
           case 2:
-            valid = qAddress.value.trim() !== '';
+            valid = qAddress.value.trim() !== "";
             break;
           case 3:
-            valid = qSizeInput.value.trim() !== '' && parseFloat(qSizeInput.value) > 0;
+            valid =
+              qSizeInput.value.trim() !== "" &&
+              parseFloat(qSizeInput.value) > 0;
             break;
           default:
             valid = true;
@@ -960,8 +1325,8 @@
       }
 
       function renderSummary() {
-        const role = qRole.value === 'other' ? qRoleOther.value : qRole.value;
-        qSummary.innerHTML = '';
+        const role = qRole.value === "other" ? qRoleOther.value : qRole.value;
+        qSummary.innerHTML = "";
         [
           `Name: ${qName.value}`,
           `Company: ${qCompany.value}`,
@@ -969,25 +1334,25 @@
           `Address: ${qAddress.value}`,
           `Site size: ${qSizeInput.value} ${qSizeUnit.value}`,
         ].forEach((text) => {
-          const li = document.createElement('li');
+          const li = document.createElement("li");
           li.textContent = text;
           qSummary.appendChild(li);
         });
       }
 
       function sendEmail() {
-        const role = qRole.value === 'other' ? qRoleOther.value : qRole.value;
+        const role = qRole.value === "other" ? qRoleOther.value : qRole.value;
         const body = `Name: ${qName.value}\nCompany: ${qCompany.value}\nRole: ${role}\nAddress: ${qAddress.value}\nSite size: ${qSizeInput.value} ${qSizeUnit.value}\n\nMessage:\n`;
-        const mailto = `mailto:enquiries@geofidelity.com?subject=${encodeURIComponent('Contact Form Submission')}&body=${encodeURIComponent(body)}`;
+        const mailto = `mailto:enquiries@geofidelity.com?subject=${encodeURIComponent("Contact Form Submission")}&body=${encodeURIComponent(body)}`;
         window.location.href = mailto;
-        contactForm.classList.add('hidden');
-        successMessage.classList.remove('hidden');
+        contactForm.classList.add("hidden");
+        successMessage.classList.remove("hidden");
       }
 
       if (contactForm) {
         showStep(0);
 
-        nextButton.addEventListener('click', () => {
+        nextButton.addEventListener("click", () => {
           if (currentStep === contactSlides.length - 1) {
             sendEmail();
           } else {
@@ -995,46 +1360,48 @@
           }
         });
 
-        backButton.addEventListener('click', () => {
+        backButton.addEventListener("click", () => {
           if (currentStep > 0) {
             showStep(currentStep - 1);
           }
         });
 
         [qName, qCompany, qAddress, qRoleOther].forEach((el) => {
-          el.addEventListener('input', validateStep);
+          el.addEventListener("input", validateStep);
         });
 
-        qRole.addEventListener('change', () => {
-          if (qRole.value === 'other') {
-            qRoleOtherWrapper.classList.remove('hidden');
+        qRole.addEventListener("change", () => {
+          if (qRole.value === "other") {
+            qRoleOtherWrapper.classList.remove("hidden");
           } else {
-            qRoleOtherWrapper.classList.add('hidden');
-            qRoleOther.value = '';
+            qRoleOtherWrapper.classList.add("hidden");
+            qRoleOther.value = "";
           }
           validateStep();
         });
 
-        qSizeSlider.addEventListener('input', () => {
+        qSizeSlider.addEventListener("input", () => {
           qSizeInput.value = qSizeSlider.value;
           validateStep();
         });
 
-        qSizeInput.addEventListener('input', () => {
-          qSizeSlider.value = qSizeInput.value;
+        qSizeInput.addEventListener("input", () => {
+          qSizeSlider.value = Math.min(qSizeInput.value, qSizeSlider.max);
           validateStep();
         });
 
-        qSizeUnit.addEventListener('change', validateStep);
+        qSizeUnit.addEventListener("change", validateStep);
 
-        resetButton.addEventListener('click', () => {
-          successMessage.classList.add('hidden');
-          contactForm.classList.remove('hidden');
-          [qName, qCompany, qRole, qRoleOther, qAddress, qSizeInput].forEach((el) => (el.value = ''));
+        resetButton.addEventListener("click", () => {
+          successMessage.classList.add("hidden");
+          contactForm.classList.remove("hidden");
+          [qName, qCompany, qRole, qRoleOther, qAddress, qSizeInput].forEach(
+            (el) => (el.value = ""),
+          );
           qSizeSlider.value = 10;
           qSizeInput.value = 10;
-          qSizeUnit.value = 'km²';
-          qRoleOtherWrapper.classList.add('hidden');
+          qSizeUnit.value = "km²";
+          qRoleOtherWrapper.classList.add("hidden");
           showStep(0);
         });
       }
