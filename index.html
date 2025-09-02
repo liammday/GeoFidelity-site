@@ -402,16 +402,6 @@
                 name="company"
                 type="text"
                 placeholder="Company"
-                class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
-              />
-            </div>
-            <div>
-              <label for="email" class="sr-only">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Email address"
                 required
                 class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
               />
@@ -422,8 +412,7 @@
                 id="message"
                 name="message"
                 rows="4"
-                placeholder="Your message"
-                required
+                placeholder="Your message (optional)"
                 class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
               ></textarea>
             </div>
@@ -437,7 +426,9 @@
             </div>
           </form>
           <div id="contact-success" class="mt-8 hidden text-center">
-            <p class="text-lg font-medium text-gray-900">Message sent! We'll get back to you soon.</p>
+            <p class="text-lg font-medium text-gray-900">
+              Your email client should now be open with a pre-filled message. Please continue there to send your message.
+            </p>
             <button
               id="contact-reset"
               type="button"
@@ -843,10 +834,9 @@
           const formData = new FormData(contactForm);
           const name = formData.get('name') || '';
           const company = formData.get('company') || '';
-          const email = formData.get('email') || '';
           const message = formData.get('message') || '';
-          const body = `Name: ${name}\nCompany: ${company}\nEmail: ${email}\n\n${message}`;
-          const mailto = `mailto:contact@geofidelity.com?subject=${encodeURIComponent('Contact Form Submission')}&body=${encodeURIComponent(body)}`;
+          const body = `Name: ${name}\nCompany: ${company}\n\nMessage:\n${message}`;
+          const mailto = `mailto:enquiries@geofidelity.com?subject=${encodeURIComponent('Contact Form Submission')}&body=${encodeURIComponent(body)}`;
           window.location.href = mailto;
           contactForm.classList.add('hidden');
           successMessage.classList.remove('hidden');
