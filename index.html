@@ -689,14 +689,14 @@
                   </div>
                 </div>
                 <div class="contact-slide hidden space-y-4" data-step="2">
-                  <div>
+                  <div class="relative">
                     <label for="q-role" class="sr-only"
                       >Company type or role</label
                     >
                     <select
                       id="q-role"
                       name="role"
-                      class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                      class="block w-full appearance-none rounded-md border border-gray-300 bg-white px-4 py-3 pr-10 font-medium text-gray-900 focus:border-indigo-500 focus:ring-indigo-500"
                       required
                     >
                       <option value="">Select company type/role</option>
@@ -705,6 +705,18 @@
                       <option>Government</option>
                       <option value="other">Other</option>
                     </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                      <svg
+                        class="h-5 w-5 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
                   </div>
                   <div id="q-role-other-wrapper" class="hidden">
                     <label for="q-role-other" class="sr-only">Other role</label>
@@ -716,17 +728,58 @@
                     />
                   </div>
                 </div>
-                <div class="contact-slide hidden" data-step="3">
-                  <label for="q-address" class="sr-only">Address</label>
-                  <input
-                    id="q-address"
-                    name="address"
-                    type="text"
-                    placeholder="Address"
-                    autocomplete="street-address"
-                    required
-                    class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
-                  />
+                <div class="contact-slide hidden space-y-4" data-step="3">
+                  <div>
+                    <label for="q-address" class="sr-only">Address</label>
+                    <input
+                      id="q-address"
+                      name="address"
+                      type="text"
+                      placeholder="Address"
+                      autocomplete="street-address"
+                      inputmode="text"
+                      required
+                      class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div>
+                    <label for="q-location" class="sr-only"
+                      >Location reference (optional)</label
+                    >
+                    <input
+                      id="q-location"
+                      name="location"
+                      type="text"
+                      placeholder="what3words, coordinates, or map link (optional)"
+                      class="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                    <p class="mt-1 text-xs text-gray-500">
+                      Optional: provide a
+                      <a
+                        href="https://what3words.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="underline"
+                        >what3words</a
+                      >
+                      address, coordinates, or a map link from
+                      <a
+                        href="https://www.google.com/maps"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="underline"
+                        >Google Maps</a
+                      >
+                      or
+                      <a
+                        href="https://maps.apple.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="underline"
+                        >Apple Maps</a
+                      >.
+                    </p>
+                  </div>
                 </div>
                 <div class="contact-slide hidden space-y-4" data-step="4">
                   <label
@@ -750,17 +803,30 @@
                       value="10"
                       class="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
                     />
-                    <select
-                      id="q-size-unit"
-                      class="rounded-md border border-gray-300 px-2 py-2 focus:border-indigo-500 focus:ring-indigo-500"
-                    >
-                      <option value="km²">km²</option>
-                      <option value="mi²">mi²</option>
-                    </select>
+                    <div class="relative w-24">
+                      <select
+                        id="q-size-unit"
+                        class="block w-full appearance-none rounded-md border border-gray-300 bg-white px-2 py-2 pr-8 font-medium text-gray-900 focus:border-indigo-500 focus:ring-indigo-500"
+                      >
+                        <option value="km²">km²</option>
+                        <option value="mi²">mi²</option>
+                      </select>
+                      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                        <svg
+                          class="h-5 w-5 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
-                  <p class="text-xs text-gray-500">
-                    To enter a value over 100, scroll the slider to the top
-                    first, then type a higher number.
+                  <p id="q-size-helper" class="hidden text-xs text-gray-500">
+                    You can type a larger number if needed.
                   </p>
                 </div>
                 <div class="contact-slide hidden space-y-4" data-step="5">
@@ -1269,9 +1335,11 @@
       const qRoleOtherWrapper = document.getElementById("q-role-other-wrapper");
       const qRoleOther = document.getElementById("q-role-other");
       const qAddress = document.getElementById("q-address");
+      const qLocation = document.getElementById("q-location");
       const qSizeSlider = document.getElementById("q-size-slider");
       const qSizeInput = document.getElementById("q-size-input");
       const qSizeUnit = document.getElementById("q-size-unit");
+      const qSizeHelper = document.getElementById("q-size-helper");
       const qSummary = document.getElementById("q-summary");
 
       let currentStep = 0;
@@ -1327,13 +1395,17 @@
       function renderSummary() {
         const role = qRole.value === "other" ? qRoleOther.value : qRole.value;
         qSummary.innerHTML = "";
-        [
+        const lines = [
           `Name: ${qName.value}`,
           `Company: ${qCompany.value}`,
           `Role: ${role}`,
           `Address: ${qAddress.value}`,
-          `Site size: ${qSizeInput.value} ${qSizeUnit.value}`,
-        ].forEach((text) => {
+        ];
+        if (qLocation.value.trim() !== "") {
+          lines.push(`Location reference: ${qLocation.value}`);
+        }
+        lines.push(`Site size: ${qSizeInput.value} ${qSizeUnit.value}`);
+        lines.forEach((text) => {
           const li = document.createElement("li");
           li.textContent = text;
           qSummary.appendChild(li);
@@ -1342,7 +1414,11 @@
 
       function sendEmail() {
         const role = qRole.value === "other" ? qRoleOther.value : qRole.value;
-        const body = `Name: ${qName.value}\nCompany: ${qCompany.value}\nRole: ${role}\nAddress: ${qAddress.value}\nSite size: ${qSizeInput.value} ${qSizeUnit.value}\n\nMessage:\n`;
+        const locationLine =
+          qLocation.value.trim() !== ""
+            ? `\nLocation reference: ${qLocation.value}`
+            : "";
+        const body = `Name: ${qName.value}\nCompany: ${qCompany.value}\nRole: ${role}\nAddress: ${qAddress.value}${locationLine}\nSite size: ${qSizeInput.value} ${qSizeUnit.value}\n\nMessage:\n`;
         const mailto = `mailto:enquiries@geofidelity.com?subject=${encodeURIComponent("Contact Form Submission")}&body=${encodeURIComponent(body)}`;
         window.location.href = mailto;
         contactForm.classList.add("hidden");
@@ -1366,7 +1442,7 @@
           }
         });
 
-        [qName, qCompany, qAddress, qRoleOther].forEach((el) => {
+        [qName, qCompany, qAddress, qRoleOther, qLocation].forEach((el) => {
           el.addEventListener("input", validateStep);
         });
 
@@ -1380,13 +1456,23 @@
           validateStep();
         });
 
+        function toggleSizeHelper() {
+          if (parseFloat(qSizeSlider.value) >= parseFloat(qSizeSlider.max)) {
+            qSizeHelper.classList.remove("hidden");
+          } else {
+            qSizeHelper.classList.add("hidden");
+          }
+        }
+
         qSizeSlider.addEventListener("input", () => {
           qSizeInput.value = qSizeSlider.value;
+          toggleSizeHelper();
           validateStep();
         });
 
         qSizeInput.addEventListener("input", () => {
           qSizeSlider.value = Math.min(qSizeInput.value, qSizeSlider.max);
+          toggleSizeHelper();
           validateStep();
         });
 
@@ -1395,12 +1481,19 @@
         resetButton.addEventListener("click", () => {
           successMessage.classList.add("hidden");
           contactForm.classList.remove("hidden");
-          [qName, qCompany, qRole, qRoleOther, qAddress, qSizeInput].forEach(
-            (el) => (el.value = ""),
-          );
+          [
+            qName,
+            qCompany,
+            qRole,
+            qRoleOther,
+            qAddress,
+            qLocation,
+            qSizeInput,
+          ].forEach((el) => (el.value = ""));
           qSizeSlider.value = 10;
           qSizeInput.value = 10;
           qSizeUnit.value = "km²";
+          qSizeHelper.classList.add("hidden");
           qRoleOtherWrapper.classList.add("hidden");
           showStep(0);
         });
