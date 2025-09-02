@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 100" fill="#4f46e5">
-  <path
-    fill-rule="evenodd"
-    clip-rule="evenodd"
-    d="M50 0a50 50 0 1 1 0 100 50 50 0 1 1 0-100Zm0 30a20 20 0 1 0 0 40 20 20 0 1 0 0-40Zm0 10h50v20H50V40Z"
-  />
-  <circle cx="112" cy="50" r="12" />
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 124 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <path d="M50,0C77.429,-0 100,22.571 100,50C100,77.429 77.429,100 50,100C22.571,100 0,77.429 0,50C-0,22.571 22.571,0 50,0ZM50,30C39.028,30 30,39.028 30,50C30,60.972 39.028,70 50,70C60.972,70 70,60.972 70,50C70,39.028 60.972,30 50,30ZM50,49.987C50,44.471 54.471,40 59.987,40C74.576,40 100,40 100,40L100,60L59.987,60C54.471,60 50,55.529 50,50.013C50,50.004 50,49.996 50,49.987Z" style="fill:rgb(79,70,229);"/>
+    <g transform="matrix(1.18498,0,0,1.18498,-23.606,-9.24901)">
+        <circle cx="112" cy="50" r="12" style="fill:rgb(229,88,70);"/>
+    </g>
 </svg>
