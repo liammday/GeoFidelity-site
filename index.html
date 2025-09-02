@@ -71,17 +71,15 @@
       .skip-link {
         position: absolute;
         top: 0;
-        left: 0;
+        left: -9999px;
         background: #4f46e5;
         color: white;
         padding: 0.5rem 1rem;
         z-index: 100;
-        transform: translateY(-100%);
-        transition: transform 0.2s ease;
       }
       .skip-link:focus {
-        transform: translateY(0);
-
+        left: 0;
+      }
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
