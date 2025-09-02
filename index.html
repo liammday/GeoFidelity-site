@@ -1,8 +1,9 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="GeoFidelity delivers precise geospatial data and mapping solutions." />
     <title>GeoFidelity</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
@@ -77,6 +78,15 @@
       }
       .skip-link:focus {
         transform: translateY(0);
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        main,
+        footer {
+          transition: none;
+        }
       }
     </style>
   </head>
@@ -85,7 +95,7 @@
     <header class="fixed inset-x-0 top-0 z-50 bg-white shadow">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#" class="flex items-center gap-2">
-          <img src="geofidelity-symbol.svg" alt="" class="h-8 w-auto" />
+          <img src="geofidelity-symbol.svg" alt="GeoFidelity logo" class="h-8 w-auto" />
           <img src="geofidelity-wordmark.svg" alt="GeoFidelity" class="h-8" />
         </a>
         <button
@@ -439,6 +449,7 @@
       </div>
     </footer>
     <script>
+      const motionOK = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
       document.getElementById('year').textContent = new Date().getFullYear();
       (function () {
         const slider = document.getElementById('hero-slider');
@@ -462,6 +473,10 @@
         }
         let moveTween;
         function animateTo(p) {
+          if (!motionOK) {
+            setPos(p);
+            return;
+          }
           if (moveTween) moveTween.kill();
           moveTween = gsap.to(state, {
             p: clamp(p),
@@ -472,6 +487,7 @@
         }
         let bounce;
         function startBounce() {
+          if (!motionOK) return;
           stopBounce();
           bounce = gsap.to(state, {
             p: 0.75,
@@ -487,16 +503,17 @@
         }
         let restartTimeout;
         function queueBounceRestart() {
+          if (!motionOK) return;
           clearTimeout(restartTimeout);
           restartTimeout = setTimeout(startBounce, 5000);
         }
-        setPos(state.p);
-        startBounce();
+        setPos(motionOK ? state.p : 0.5);
+        if (motionOK) startBounce();
         let dragging = false;
         function update(e, immediate = false) {
           const rect = slider.getBoundingClientRect();
           const pos = (e.clientX - rect.left) / rect.width;
-          if (immediate) {
+          if (immediate || !motionOK) {
             setPos(pos);
           } else {
             animateTo(pos);
@@ -660,25 +677,27 @@
         window.addEventListener('scroll', onScroll);
         window.addEventListener('load', onScroll);
 
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.utils.toArray('section:not(:first-of-type)').forEach((section) => {
-        const content = section.querySelector(':scope > *');
-        if (content) {
-          gsap.fromTo(
-            content,
-            { opacity: 0 },
-            {
-              opacity: 1,
-              scrollTrigger: {
-                trigger: section,
-                start: 'top 90%',
-                end: 'top 50%',
-                scrub: true,
-              },
-            }
-          );
-        }
-      });
+      if (motionOK) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('section:not(:first-of-type)').forEach((section) => {
+          const content = section.querySelector(':scope > *');
+          if (content) {
+            gsap.fromTo(
+              content,
+              { opacity: 0 },
+              {
+                opacity: 1,
+                scrollTrigger: {
+                  trigger: section,
+                  start: 'top 90%',
+                  end: 'top 50%',
+                  scrub: true,
+                },
+              }
+            );
+          }
+        });
+      }
 
       const scenarios = {
         housing: {
@@ -749,9 +768,11 @@
             afterList.appendChild(li);
           });
           const newItems = [...beforeList.children, ...afterList.children];
-          gsap.fromTo(newItems, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.05 });
+          if (motionOK) {
+            gsap.fromTo(newItems, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.05 });
+          }
         };
-        if (oldItems.length) {
+        if (oldItems.length && motionOK) {
           gsap.to(oldItems, {
             opacity: 0,
             y: -10,
