@@ -1322,7 +1322,7 @@
           serviceTiers.forEach((tier) => {
             const card = document.createElement("div");
             card.className =
-              "snap-center min-w-[80%] flex-shrink-0 rounded-lg bg-white p-6 shadow lg:min-w-0";
+              "snap-start w-[80%] flex-none rounded-lg bg-white p-6 shadow lg:w-auto";
             card.innerHTML = `
               <h3 class="text-xl font-semibold text-gray-900">${tier.title}</h3>
               <p class="mt-2 text-gray-600">${tier.what}</p>
@@ -1358,12 +1358,12 @@
             if (!customerNavWrapper.classList.contains("fixed")) {
               customerNavWrapper.classList.add(
                 "fixed",
-                "top-0",
                 "left-0",
                 "right-0",
                 "z-30",
                 "bg-white",
                 "shadow",
+                "top-[var(--nav-height)]",
               );
               customerNavWrapper.parentNode.insertBefore(
                 navPlaceholder,
@@ -1373,12 +1373,12 @@
           } else if (customerNavWrapper.classList.contains("fixed")) {
             customerNavWrapper.classList.remove(
               "fixed",
-              "top-0",
               "left-0",
               "right-0",
               "z-30",
               "bg-white",
               "shadow",
+              "top-[var(--nav-height)]",
             );
             if (navPlaceholder.parentNode)
               navPlaceholder.parentNode.removeChild(navPlaceholder);
