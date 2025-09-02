@@ -430,9 +430,11 @@
         if (!slider) return;
         const afterWrapper = document.getElementById('hero-after-wrapper');
         const divider = document.getElementById('hero-divider');
-        const state = { p: 0.25 };
-        const MIN = 0.05;
-        const MAX = 0.95;
+        const BOUNCE_MIN = 0.4;
+        const BOUNCE_MAX = 0.6;
+        const state = { p: BOUNCE_MIN };
+        const MIN = 0.1;
+        const MAX = 0.9;
         function clamp(p) {
           return Math.min(Math.max(p, MIN), MAX);
         }
@@ -458,8 +460,10 @@
         let bounce;
         function startBounce() {
           stopBounce();
+          state.p = BOUNCE_MIN;
+          applyPos();
           bounce = gsap.to(state, {
-            p: 0.75,
+            p: BOUNCE_MAX,
             duration: 3,
             repeat: -1,
             yoyo: true,
@@ -473,7 +477,15 @@
         let restartTimeout;
         function queueBounceRestart() {
           clearTimeout(restartTimeout);
-          restartTimeout = setTimeout(startBounce, 5000);
+          restartTimeout = setTimeout(() => {
+            gsap.to(state, {
+              p: BOUNCE_MIN,
+              duration: 0.5,
+              ease: 'power1.inOut',
+              onUpdate: applyPos,
+              onComplete: startBounce,
+            });
+          }, 2000);
         }
         setPos(state.p);
         startBounce();
