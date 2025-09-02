@@ -65,6 +65,16 @@
       #contact {
         min-height: calc(100vh - var(--nav-height));
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        main,
+        footer {
+          transition: none;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-50 text-gray-900 antialiased">
@@ -425,6 +435,7 @@
       </div>
     </footer>
     <script>
+      const motionOK = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
       document.getElementById('year').textContent = new Date().getFullYear();
       (function () {
         const slider = document.getElementById('hero-slider');
@@ -448,6 +459,10 @@
         }
         let moveTween;
         function animateTo(p) {
+          if (!motionOK) {
+            setPos(p);
+            return;
+          }
           if (moveTween) moveTween.kill();
           moveTween = gsap.to(state, {
             p: clamp(p),
@@ -458,6 +473,7 @@
         }
         let bounce;
         function startBounce() {
+          if (!motionOK) return;
           stopBounce();
           bounce = gsap.to(state, {
             p: 0.75,
@@ -473,16 +489,17 @@
         }
         let restartTimeout;
         function queueBounceRestart() {
+          if (!motionOK) return;
           clearTimeout(restartTimeout);
           restartTimeout = setTimeout(startBounce, 5000);
         }
-        setPos(state.p);
-        startBounce();
+        setPos(motionOK ? state.p : 0.5);
+        if (motionOK) startBounce();
         let dragging = false;
         function update(e, immediate = false) {
           const rect = slider.getBoundingClientRect();
           const pos = (e.clientX - rect.left) / rect.width;
-          if (immediate) {
+          if (immediate || !motionOK) {
             setPos(pos);
           } else {
             animateTo(pos);
@@ -646,25 +663,27 @@
         window.addEventListener('scroll', onScroll);
         window.addEventListener('load', onScroll);
 
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.utils.toArray('section:not(:first-of-type)').forEach((section) => {
-        const content = section.querySelector(':scope > *');
-        if (content) {
-          gsap.fromTo(
-            content,
-            { opacity: 0 },
-            {
-              opacity: 1,
-              scrollTrigger: {
-                trigger: section,
-                start: 'top 90%',
-                end: 'top 50%',
-                scrub: true,
-              },
-            }
-          );
-        }
-      });
+      if (motionOK) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('section:not(:first-of-type)').forEach((section) => {
+          const content = section.querySelector(':scope > *');
+          if (content) {
+            gsap.fromTo(
+              content,
+              { opacity: 0 },
+              {
+                opacity: 1,
+                scrollTrigger: {
+                  trigger: section,
+                  start: 'top 90%',
+                  end: 'top 50%',
+                  scrub: true,
+                },
+              }
+            );
+          }
+        });
+      }
 
       const scenarios = {
         housing: {
@@ -735,9 +754,11 @@
             afterList.appendChild(li);
           });
           const newItems = [...beforeList.children, ...afterList.children];
-          gsap.fromTo(newItems, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.05 });
+          if (motionOK) {
+            gsap.fromTo(newItems, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.05 });
+          }
         };
-        if (oldItems.length) {
+        if (oldItems.length && motionOK) {
           gsap.to(oldItems, {
             opacity: 0,
             y: -10,
