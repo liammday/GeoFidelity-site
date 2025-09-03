@@ -422,83 +422,86 @@
           </div>
         </div>
       </section>
-      <section
-        id="customers"
-        aria-labelledby="customers-heading"
-        class="bg-white py-24"
-      >
-        <div class="mx-auto max-w-7xl px-6">
-          <h2
-            id="customers-heading"
-            class="text-center text-3xl font-bold text-gray-900"
+      <section id="customer-sections">
+        <div
+          id="customer-nav-wrapper"
+          class="mt-24 sticky top-[var(--nav-height)] z-30 w-full bg-white"
+        >
+          <div
+            class="mx-auto max-w-7xl px-6 flex border-b border-gray-200 text-sm"
+            role="tablist"
           >
-            Customers
-          </h2>
+            <button
+              class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold"
+              data-client="housing"
+              role="tab"
+              aria-selected="true"
+            >
+              Housing Developer
+            </button>
+            <button
+              class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+              data-client="tourism"
+              role="tab"
+              aria-selected="false"
+            >
+              Tourism Board
+            </button>
+            <button
+              class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+              data-client="park"
+              role="tab"
+              aria-selected="false"
+            >
+              National Park Authority
+            </button>
+          </div>
+        </div>
 
-            <div class="mt-12">
-              <div id="customer-nav-wrapper" class="w-full bg-white">
-                <div
-                  class="mx-auto max-w-7xl px-6 flex border-b border-gray-200 text-sm"
-                  role="tablist"
-                >
-                  <button
-                    class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold"
-                    data-client="housing"
-                    role="tab"
-                    aria-selected="true"
-                  >
-                    Housing Developer
-                  </button>
-                  <button
-                    class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
-                    data-client="tourism"
-                    role="tab"
-                    aria-selected="false"
-                  >
-                    Tourism Board
-                  </button>
-                  <button
-                    class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
-                    data-client="park"
-                    role="tab"
-                    aria-selected="false"
-                  >
-                    National Park Authority
-                  </button>
-                </div>
+        <section
+          id="customers"
+          aria-labelledby="customers-heading"
+          class="bg-white pt-12 pb-24"
+        >
+          <div class="mx-auto max-w-7xl px-6">
+            <h2
+              id="customers-heading"
+              class="text-center text-3xl font-bold text-gray-900"
+            >
+              Customers
+            </h2>
+
+            <div class="mt-12 grid gap-8 md:grid-cols-2">
+              <div>
+                <h3 class="text-xl font-semibold">Before</h3>
+                <ul id="before-list" class="mt-4 space-y-3"></ul>
               </div>
-
-              <div class="mt-8 grid gap-8 md:grid-cols-2">
-                <div>
-                  <h3 class="text-xl font-semibold">Before</h3>
-                  <ul id="before-list" class="mt-4 space-y-3"></ul>
-                </div>
-                <div>
+              <div>
                 <h3 class="text-xl font-semibold">After</h3>
                 <ul id="after-list" class="mt-4 space-y-3"></ul>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section
-        id="services"
-        aria-labelledby="services-heading"
-        class="bg-gray-50 py-24"
-      >
-        <div class="mx-auto max-w-7xl px-6">
-          <h2
-            id="services-heading"
-            class="text-center text-3xl font-bold text-gray-900"
-          >
-            Services
-          </h2>
+        </section>
+        <section
+          id="services"
+          aria-labelledby="services-heading"
+          class="bg-gray-50 py-24"
+        >
+          <div class="mx-auto max-w-7xl px-6">
+            <h2
+              id="services-heading"
+              class="text-center text-3xl font-bold text-gray-900"
+            >
+              Services
+            </h2>
             <div
               id="tier-container"
               class="mt-12 flex space-x-6 overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:space-x-0"
             ></div>
           </div>
         </section>
+      </section>
       <section
         id="process"
         aria-labelledby="process-heading"
@@ -1342,59 +1345,6 @@
             tierContainer.appendChild(card);
           });
         }
-
-        const customerNavWrapper = document.getElementById("customer-nav-wrapper");
-        const servicesSection = document.getElementById("services");
-        const navPlaceholder = document.createElement("div");
-        let navOffsetTop;
-
-        function updateCustomerNavMetrics() {
-          navPlaceholder.style.height =
-            customerNavWrapper.offsetHeight + "px";
-          navOffsetTop = customerNavWrapper.offsetTop;
-        }
-
-        updateCustomerNavMetrics();
-        window.addEventListener("load", updateCustomerNavMetrics);
-        window.addEventListener("resize", updateCustomerNavMetrics);
-
-        window.addEventListener("scroll", () => {
-          const servicesBottom =
-            servicesSection.offsetTop + servicesSection.offsetHeight;
-          if (
-            window.scrollY >= navOffsetTop &&
-            window.scrollY < servicesBottom
-          ) {
-            if (!customerNavWrapper.classList.contains("fixed")) {
-              customerNavWrapper.classList.add(
-                "fixed",
-                "left-0",
-                "right-0",
-                "z-30",
-                "bg-white",
-                "shadow",
-                "top-[var(--nav-height)]",
-              );
-              customerNavWrapper.parentNode.insertBefore(
-                navPlaceholder,
-                customerNavWrapper,
-              );
-            }
-          } else if (customerNavWrapper.classList.contains("fixed")) {
-            customerNavWrapper.classList.remove(
-              "fixed",
-              "left-0",
-              "right-0",
-              "z-30",
-              "bg-white",
-              "shadow",
-              "top-[var(--nav-height)]",
-            );
-            if (navPlaceholder.parentNode)
-              navPlaceholder.parentNode.removeChild(navPlaceholder);
-            updateCustomerNavMetrics();
-          }
-        });
 
         tabs.forEach((tab) => {
           tab.addEventListener("click", () => {
