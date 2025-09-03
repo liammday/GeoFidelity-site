@@ -142,8 +142,8 @@
           <a href="#outcomes" class="text-gray-600 hover:text-gray-900"
             >Outcomes</a
           >
-          <a href="#customers" class="text-gray-600 hover:text-gray-900"
-            >Customers</a
+          <a href="#use-cases" class="text-gray-600 hover:text-gray-900"
+            >Use Cases</a
           >
           <a href="#services" class="text-gray-600 hover:text-gray-900"
             >Services</a
@@ -171,8 +171,8 @@
         <a href="#outcomes" class="w-full text-gray-600 hover:text-gray-900"
           >Outcomes</a
         >
-        <a href="#customers" class="w-full text-gray-600 hover:text-gray-900"
-          >Customers</a
+        <a href="#use-cases" class="w-full text-gray-600 hover:text-gray-900"
+          >Use Cases</a
         >
         <a href="#services" class="w-full text-gray-600 hover:text-gray-900"
           >Services</a
@@ -423,14 +423,18 @@
         </div>
       </section>
       <section id="customer-sections">
-        <div
-          id="customer-nav-wrapper"
-          class="mt-24 sticky top-[var(--nav-height)] z-30 w-full bg-white"
-        >
+        <div id="customer-nav-container" class="mt-24">
+          <p class="mb-4 text-center text-lg italic text-gray-700">
+            We are a...
+          </p>
           <div
-            class="mx-auto max-w-7xl px-6 flex border-b border-gray-200 text-sm"
-            role="tablist"
+            id="customer-nav-wrapper"
+            class="sticky top-[var(--nav-height)] z-30 w-full bg-white"
           >
+            <div
+              class="mx-auto max-w-7xl px-6 flex border-b border-gray-200 text-sm"
+              role="tablist"
+            >
             <button
               class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold"
               data-client="housing"
@@ -456,19 +460,20 @@
               National Park Authority
             </button>
           </div>
+          </div>
         </div>
 
         <section
-          id="customers"
-          aria-labelledby="customers-heading"
+          id="use-cases"
+          aria-labelledby="use-cases-heading"
           class="bg-white pt-12 pb-24"
         >
           <div class="mx-auto max-w-7xl px-6">
             <h2
-              id="customers-heading"
+              id="use-cases-heading"
               class="text-center text-3xl font-bold text-gray-900"
             >
-              Customers
+              Use Cases
             </h2>
 
             <div class="mt-12 grid gap-8 md:grid-cols-2">
@@ -1321,29 +1326,52 @@
         }
 
         function renderServices(type) {
-          tierContainer.innerHTML = "";
-          serviceTiers.forEach((tier) => {
-            const card = document.createElement("div");
-            card.className =
-              "snap-start w-[80%] flex-none rounded-lg bg-white p-6 shadow lg:w-auto";
-            card.innerHTML = `
-              <h3 class="text-xl font-semibold text-gray-900">${tier.title}</h3>
-              <p class="mt-2 text-gray-600">${tier.what}</p>
-              <div class="mt-4">
-                <h4 class="font-semibold">Who it's for</h4>
-                <ul class="mt-1 list-disc pl-5 text-gray-600">
-                  <li>${tier.who[type]}</li>
-                </ul>
-              </div>
-              <div class="mt-4">
-                <h4 class="font-semibold">Deliverables</h4>
-                <ul class="mt-1 list-disc pl-5 text-gray-600">
-                  ${tier.deliverables.map((d) => `<li>${d}</li>`).join("")}
-                </ul>
-              </div>
-            `;
-            tierContainer.appendChild(card);
-          });
+          const oldCards = [...tierContainer.children];
+
+          const populate = () => {
+            tierContainer.innerHTML = "";
+            serviceTiers.forEach((tier) => {
+              const card = document.createElement("div");
+              card.className =
+                "snap-start w-[80%] flex-none rounded-lg bg-white p-6 shadow lg:w-auto";
+              card.innerHTML = `
+                <h3 class="text-xl font-semibold text-gray-900">${tier.title}</h3>
+                <p class="mt-2 text-gray-600">${tier.what}</p>
+                <div class="mt-4">
+                  <h4 class="font-semibold">Who it's for</h4>
+                  <ul class="mt-1 list-disc pl-5 text-gray-600">
+                    <li>${tier.who[type]}</li>
+                  </ul>
+                </div>
+                <div class="mt-4">
+                  <h4 class="font-semibold">Deliverables</h4>
+                  <ul class="mt-1 list-disc pl-5 text-gray-600">
+                    ${tier.deliverables.map((d) => `<li>${d}</li>`).join("")}
+                  </ul>
+                </div>
+              `;
+              tierContainer.appendChild(card);
+            });
+            const newCards = [...tierContainer.children];
+            if (motionOK) {
+              gsap.fromTo(
+                newCards,
+                { opacity: 0, y: 10 },
+                { opacity: 1, y: 0, duration: 0.2, stagger: 0.05 },
+              );
+            }
+          };
+
+          if (oldCards.length && motionOK) {
+            gsap.to(oldCards, {
+              opacity: 0,
+              y: 10,
+              duration: 0.2,
+              onComplete: populate,
+            });
+          } else {
+            populate();
+          }
         }
 
         tabs.forEach((tab) => {
