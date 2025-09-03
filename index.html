@@ -1346,8 +1346,18 @@
         const customerNavWrapper = document.getElementById("customer-nav-wrapper");
         const servicesSection = document.getElementById("services");
         const navPlaceholder = document.createElement("div");
-        navPlaceholder.style.height = customerNavWrapper.offsetHeight + "px";
-        const navOffsetTop = customerNavWrapper.offsetTop;
+        let navOffsetTop;
+
+        function updateCustomerNavMetrics() {
+          navPlaceholder.style.height =
+            customerNavWrapper.offsetHeight + "px";
+          navOffsetTop = customerNavWrapper.offsetTop;
+        }
+
+        updateCustomerNavMetrics();
+        window.addEventListener("load", updateCustomerNavMetrics);
+        window.addEventListener("resize", updateCustomerNavMetrics);
+
         window.addEventListener("scroll", () => {
           const servicesBottom =
             servicesSection.offsetTop + servicesSection.offsetHeight;
@@ -1382,6 +1392,7 @@
             );
             if (navPlaceholder.parentNode)
               navPlaceholder.parentNode.removeChild(navPlaceholder);
+            updateCustomerNavMetrics();
           }
         });
 
