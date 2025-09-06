@@ -101,6 +101,17 @@
           transition: none;
         }
       }
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-50 text-gray-900 antialiased">
@@ -980,8 +991,17 @@
       </section>
     </main>
     <footer class="bg-gray-900 py-12 text-sm text-gray-400">
-      <div class="mx-auto max-w-7xl px-6 text-center">
+      <div class="mx-auto max-w-7xl px-6 text-center flex flex-col items-center gap-4 md:flex-row md:justify-between md:text-left">
         <p>&copy; <span id="year"></span> GeoFidelity. All rights reserved.</p>
+        <a
+          href="https://www.liamday.co.uk"
+          target="_blank"
+          rel="noopener"
+          style="position:relative;display:inline-flex;align-items:center;justify-content:center;padding:0.25rem 0.75rem;border-radius:9999px;font-weight:500;font-size:0.75rem;line-height:1;background-color:#000;color:transparent;"
+        >
+          <span style="position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#8b5cf6,#3b82f6,#8b5cf6);background-size:200% 200%;animation:gradientShift 8s ease infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;"></span>
+          <span style="background:linear-gradient(90deg,#8b5cf6,#3b82f6,#8b5cf6);background-size:200% 200%;animation:gradientShift 8s ease infinite;-webkit-background-clip:text;background-clip:text;color:transparent;">Built by www.liamday.co.uk</span>
+        </a>
       </div>
     </footer>
     <script>
