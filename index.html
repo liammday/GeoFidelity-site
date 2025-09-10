@@ -565,8 +565,9 @@
           >
             Process
           </h2>
-          <div class="relative mt-20">
+          <div class="relative mt-20" id="process-timeline">
             <div
+              id="process-line"
               class="absolute left-4 top-0 h-full w-px bg-indigo-600 lg:left-1/2"
             ></div>
             <ol class="space-y-16">
@@ -653,27 +654,26 @@
                       </div>
                     </div>
                     <div class="col-start-2 mt-8 lg:col-start-3 lg:pl-8">
-                      <div class="flex flex-col gap-4 md:flex-row md:gap-8">
-                        <div class="flex items-center -ml-6 md:ml-0 md:flex-1 lg:-ml-8">
-                          <div class="h-px flex-grow bg-indigo-600"></div>
-                          <span class="mr-2 block h-4 w-4 flex-shrink-0 rounded-full bg-indigo-600"></span>
+                      <div id="branch-list" class="flex flex-col gap-4 md:flex-row md:gap-8">
+                        <div class="flex items-center ml-4 md:ml-0 md:flex-1 lg:-ml-8">
+                          <div class="h-px w-6 shrink-0 bg-indigo-600 md:flex-1 md:w-auto"></div>
+                          <span class="mx-2 block h-4 w-4 flex-shrink-0 rounded-full bg-indigo-600"></span>
                           <div class="flex-1 rounded-lg bg-white px-4 py-2 shadow text-gray-600">
                             Consumer apps (Apple, Google)
                           </div>
                         </div>
 
-                        <div class="flex items-center -ml-6 md:ml-0 md:flex-1 lg:-ml-8">
-
-                          <div class="h-px flex-grow bg-indigo-600"></div>
-                          <span class="mr-2 block h-4 w-4 flex-shrink-0 rounded-full bg-indigo-600"></span>
+                        <div class="flex items-center ml-4 md:ml-0 md:flex-1 lg:-ml-8">
+                          <div class="h-px w-6 shrink-0 bg-indigo-600 md:flex-1 md:w-auto"></div>
+                          <span class="mx-2 block h-4 w-4 flex-shrink-0 rounded-full bg-indigo-600"></span>
                           <div class="flex-1 rounded-lg bg-white px-4 py-2 shadow text-gray-600">
                             Aggregators (Mapbox, etc.)
                           </div>
                         </div>
 
-                        <div class="flex items-center -ml-6 md:ml-0 md:flex-1 lg:-ml-8">
-                          <div class="h-px flex-grow bg-indigo-600"></div>
-                          <span class="mr-2 block h-4 w-4 flex-shrink-0 rounded-full bg-indigo-600"></span>
+                        <div class="flex items-center ml-4 md:ml-0 md:flex-1 lg:-ml-8">
+                          <div class="h-px w-6 shrink-0 bg-indigo-600 md:flex-1 md:w-auto"></div>
+                          <span class="mx-2 block h-4 w-4 flex-shrink-0 rounded-full bg-indigo-600"></span>
                           <div class="flex-1 rounded-lg bg-white px-4 py-2 shadow text-gray-600">
                             1st party uses (customer websites/tooling)
                           </div>
@@ -1245,6 +1245,21 @@
       }
       window.addEventListener("scroll", onScroll);
       window.addEventListener("load", onScroll);
+
+      const timeline = document.getElementById("process-timeline");
+      const lineEl = document.getElementById("process-line");
+      const branchList = document.getElementById("branch-list");
+      function updateProcessLine() {
+        if (!timeline || !lineEl || !branchList) return;
+        const last = branchList.lastElementChild;
+        if (!last) return;
+        const timelineTop = timeline.getBoundingClientRect().top;
+        const lastRect = last.getBoundingClientRect();
+        const height = lastRect.top + lastRect.height / 2 - timelineTop;
+        lineEl.style.height = `${height}px`;
+      }
+      window.addEventListener("load", updateProcessLine);
+      window.addEventListener("resize", updateProcessLine);
 
       if (motionOK) {
         gsap.registerPlugin(ScrollTrigger);
