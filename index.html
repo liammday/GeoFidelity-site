@@ -460,11 +460,11 @@
             class="sticky top-[var(--nav-height)] z-30 w-full bg-white"
           >
             <div
-              class="mx-auto max-w-7xl px-6 flex border-b border-gray-200 text-sm"
+              class="mx-auto max-w-7xl px-6 flex overflow-x-auto border-b border-gray-200 text-sm"
               role="tablist"
             >
               <button
-                class="client-tab border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold"
+                class="client-tab flex-shrink-0 max-w-[70%] border-b-2 border-indigo-600 px-4 py-2 text-indigo-600 font-semibold md:max-w-none md:flex-shrink"
                 data-client="housing"
                 role="tab"
                 aria-selected="true"
@@ -472,7 +472,7 @@
                 Housing Developer
               </button>
               <button
-                class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+                class="client-tab flex-shrink-0 max-w-[70%] border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal md:max-w-none md:flex-shrink"
                 data-client="tourism"
                 role="tab"
                 aria-selected="false"
@@ -480,12 +480,28 @@
                 Tourism Board
               </button>
               <button
-                class="client-tab border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal"
+                class="client-tab flex-shrink-0 max-w-[70%] border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal md:max-w-none md:flex-shrink"
                 data-client="park"
                 role="tab"
                 aria-selected="false"
               >
                 National Park Authority
+              </button>
+              <button
+                class="client-tab flex-shrink-0 max-w-[70%] border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal md:max-w-none md:flex-shrink"
+                data-client="logistics"
+                role="tab"
+                aria-selected="false"
+              >
+                Logistics Company
+              </button>
+              <button
+                class="client-tab flex-shrink-0 max-w-[70%] border-b-2 border-transparent px-4 py-2 text-gray-600 hover:text-gray-900 font-normal md:max-w-none md:flex-shrink"
+                data-client="retail"
+                role="tab"
+                aria-selected="false"
+              >
+                Retail Chain
               </button>
             </div>
           </div>
@@ -807,6 +823,8 @@
                       <option>Developer</option>
                       <option>Planner</option>
                       <option>Government</option>
+                      <option>Logistics</option>
+                      <option>Retail</option>
                       <option value="other">Other</option>
                     </select>
                     <div
@@ -1361,6 +1379,66 @@
             },
           ],
         },
+        logistics: {
+          before: [
+            {
+              text: "Dispatchers rely on inaccurate warehouse coordinates.",
+              positive: false,
+            },
+            {
+              text: "Drivers struggle to find correct loading docks.",
+              positive: false,
+            },
+            {
+              text: "Routing apps ignore vehicle restrictions.",
+              positive: false,
+            },
+          ],
+          after: [
+            {
+              text: "Precise warehouse locations improve navigation.",
+              positive: true,
+            },
+            {
+              text: "Mapped loading zones streamline deliveries.",
+              positive: true,
+            },
+            {
+              text: "Updated data reflects height and weight limits.",
+              positive: true,
+            },
+          ],
+        },
+        retail: {
+          before: [
+            {
+              text: "Stores missing in navigation apps.",
+              positive: false,
+            },
+            {
+              text: "Customers are directed to back entrances.",
+              positive: false,
+            },
+            {
+              text: "Opening hours inconsistent across platforms.",
+              positive: false,
+            },
+          ],
+          after: [
+            {
+              text: "All branches appear correctly in maps.",
+              positive: true,
+            },
+            {
+              text: "Front entrances prioritized for directions.",
+              positive: true,
+            },
+            {
+              text: "Consistent hours improve customer trust.",
+              positive: true,
+            },
+          ],
+        },
       };
 
       const serviceTiers = [
@@ -1373,6 +1451,10 @@
             tourism:
               "Tourism Board: Standardise points of interest (heritage sites, attractions, hospitality) so visitors find you consistently in every mapping app.",
             park: "National Park Authority: Ensure trails, car parks, visitor centres, and waymarked routes are visible and accurate across Google, Apple, and OSM-derived apps.",
+            logistics:
+              "Logistics Company: Consolidate depot and drop-off locations so drivers get accurate turn-by-turn guidance.",
+            retail:
+              "Retail Chain: Ensure every storefront and pickup point is present and labeled correctly across mapping services.",
           },
           deliverables: [
             "Aggregated and cleaned dataset",
@@ -1389,6 +1471,10 @@
             tourism:
               "Tourism Board: Add booking links, photos, and tags to improve discoverability in travel platforms.",
             park: "National Park Authority: Ensure accessibility data (wheelchair routes, gradients, toilets) is consistently visible across major apps.",
+            logistics:
+              "Logistics Company: Add vehicle access notes and delivery time windows to reduce failed attempts.",
+            retail:
+              "Retail Chain: Enrich listings with opening hours and accessibility info to boost visibility.",
           },
           deliverables: [
             "Fully validated dataset with rich metadata",
@@ -1405,6 +1491,10 @@
             tourism:
               "Tourism Board: Capture verified imagery, footfall counts, and street-level navigation details to stand out on digital platforms.",
             park: "National Park Authority: Survey trails, signage, and safety infrastructure to ensure accuracy in both maps and emergency-services databases.",
+            logistics:
+              "Logistics Company: Capture precise loading bay positions and gate codes for smoother operations.",
+            retail:
+              "Retail Chain: Survey car parks, entrances, and in-store facilities to keep maps accurate as sites evolve.",
           },
           deliverables: [
             "Verified first-party dataset with GPS traces and images",
