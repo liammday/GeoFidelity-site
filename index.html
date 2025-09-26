@@ -386,6 +386,21 @@
       .theme-toggle button:is(:hover, :focus-visible) {
         color: var(--color-text-primary);
       }
+      [data-theme="light"] .theme-toggle {
+        background-color: var(--color-surface-contrast);
+        border-color: var(--color-surface-contrast);
+      }
+      [data-theme="light"] .theme-toggle button {
+        color: var(--color-text-inverse);
+      }
+      [data-theme="light"] .theme-toggle button.is-active {
+        background-color: rgba(255, 255, 255, 0.18);
+        color: var(--color-text-inverse);
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+      }
+      [data-theme="light"] .theme-toggle button:is(:hover, :focus-visible) {
+        color: var(--color-text-inverse);
+      }
       .creator-credit {
         position: relative;
         display: inline-flex;
@@ -426,6 +441,13 @@
         z-index: -1;
         transition: background-color var(--transition-duration) ease,
           opacity var(--transition-duration) ease;
+      }
+      [data-theme="light"] .creator-credit {
+        color: var(--color-text-inverse);
+      }
+      [data-theme="light"] .creator-credit::after {
+        background-color: var(--color-surface-contrast);
+        opacity: 0.92;
       }
       [data-theme="dark"] .creator-credit {
         color: var(--color-text-inverse);
@@ -1130,7 +1152,7 @@
           <h2 id="primary-cta-heading" class="text-center text-3xl font-bold">
             Ready to help customers find you?
           </h2>
-          <p class="mt-4 text-lg text-indigo-100">
+          <p class="mt-4 text-lg text-white">
             Get a Map Readiness Audit and a tailored plan so visitors never get
             lost.
           </p>
@@ -1397,7 +1419,7 @@
         </div>
       </section>
     </main>
-    <footer class="bg-gray-900 py-12 text-sm text-gray-400">
+    <footer class="bg-gray-900 py-12 text-sm text-gray-300">
       <div
         class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 text-center md:flex-row md:items-center md:justify-between md:text-left"
       >
@@ -1406,7 +1428,7 @@
           <div class="flex flex-col items-center gap-2 sm:flex-row sm:items-center sm:gap-3">
             <span
               id="appearance-label"
-              class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500"
+              class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-300"
               >Appearance</span
             >
             <div
